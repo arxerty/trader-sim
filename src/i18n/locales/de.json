@@ -1,0 +1,342 @@
+{
+  "common": {
+    "appName": "TradeSim",
+    "tagline": "Trading-Simulator",
+    "disclaimer": "Lernspiel mit fiktiven Daten. Keine Finanzberatung.",
+    "pause": "Pause",
+    "resume": "Fortsetzen",
+    "paused": "Pausiert",
+    "live": "Live",
+    "speed": "Tempo",
+    "speedValue": "{{value}}×",
+    "close": "Schließen",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "skip": "Überspringen",
+    "restart": "Neu starten",
+    "settings": "Einstellungen",
+    "notAvailable": "—",
+    "hotkeysHint": "Tastenkürzel: B — kaufen, S — verkaufen, Leertaste — Pause",
+    "dismiss": "Benachrichtigung schließen",
+    "notifications": "Benachrichtigungen",
+    "mainNavigation": "Hauptnavigation",
+    "chartLabel": "Kurschart für {{asset}}",
+    "skipToContent": "Zum Hauptinhalt springen"
+  },
+  "nav": {
+    "trade": "Handel",
+    "portfolio": "Portfolio",
+    "news": "News",
+    "progress": "Fortschritt"
+  },
+  "sections": {
+    "watchlist": "Märkte",
+    "orderPanel": "Neue Order",
+    "positions": "Positionen",
+    "orders": "Orders",
+    "history": "Verlauf",
+    "news": "News",
+    "stats": "Statistik",
+    "achievements": "Erfolge",
+    "leaderboard": "Bestenliste"
+  },
+  "assets": {
+    "NOVA": { "name": "Nova Technologies" },
+    "PTRX": { "name": "Petrox Energie" },
+    "AURM": { "name": "Aurum Gold Trust" },
+    "BTCX": { "name": "Bitcoinex" },
+    "GX500": { "name": "Global X 500 Index" },
+    "VOLT": { "name": "Voltara Motors" },
+    "MEDI": { "name": "Medicor Pharma" },
+    "AGRO": { "name": "Agrofield Weizen" }
+  },
+  "categories": {
+    "tech": "Technologie",
+    "energy": "Öl & Gas",
+    "metal": "Gold",
+    "crypto": "Krypto",
+    "index": "Index",
+    "auto": "Automobil",
+    "pharma": "Pharma",
+    "agri": "Landwirtschaft"
+  },
+  "trade": {
+    "long": "Long",
+    "short": "Short",
+    "buyLong": "Kaufen / Long",
+    "sellShort": "Verkaufen / Short",
+    "orderType": "Ordertyp",
+    "market": "Market",
+    "limit": "Limit",
+    "limitPrice": "Limitpreis",
+    "amountUsd": "Margin, USD",
+    "shareOfFreeMargin": "Anteil der freien Margin",
+    "leverage": "Hebel",
+    "leverageValue": "x{{value}}",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "optional": "optional",
+    "price": "Preis",
+    "change": "Änderung",
+    "notional": "Positionsgröße",
+    "quantity": "Menge",
+    "fee": "Gebühr ({{rate}})",
+    "liquidationPrice": "Liquidationspreis",
+    "freeMargin": "Freie Margin",
+    "asset": "Wert",
+    "side": "Richtung",
+    "entry": "Einstieg",
+    "mark": "Aktuell",
+    "exit": "Ausstieg",
+    "size": "Größe",
+    "pnl": "G&V",
+    "reason": "Grund",
+    "time": "Zeit",
+    "actions": "Aktionen",
+    "closePosition": "Schließen",
+    "closePositionAria": "{{side}}-Position in {{asset}} schließen",
+    "cancelOrder": "Stornieren",
+    "cancelOrderAria": "Limit-Order für {{asset}} stornieren",
+    "noPositions": "Keine offenen Positionen",
+    "noOrders": "Keine offenen Orders",
+    "noHistory": "Noch keine geschlossenen Trades",
+    "positionsCount_one": "{{count}} offene Position",
+    "positionsCount_other": "{{count}} offene Positionen",
+    "tradesCount_one": "{{count}} Trade",
+    "tradesCount_other": "{{count}} Trades",
+    "selectAsset": "Wert auswählen",
+    "reasons": {
+      "manual": "Manuell",
+      "stopLoss": "Stop-Loss",
+      "takeProfit": "Take-Profit",
+      "liquidation": "Liquidation"
+    }
+  },
+  "news": {
+    "empty": "Noch keine News. Bleiben Sie dran…",
+    "positive": "Bullisch",
+    "negative": "Bärisch",
+    "impact": "Wirkung: {{level}}",
+    "impactLevels": {
+      "low": "gering",
+      "medium": "mittel",
+      "high": "hoch"
+    },
+    "templates": {
+      "earningsBeat_one": "{{asset}} übertrifft die Gewinnprognose {{count}} Quartal in Folge",
+      "earningsBeat_other": "{{asset}} übertrifft die Gewinnprognose {{count}} Quartale in Folge",
+      "analystUpgrade_one": "{{count}} Analyst stuft {{asset}} auf „Kaufen“ hoch",
+      "analystUpgrade_other": "{{count}} Analysten stufen {{asset}} auf „Kaufen“ hoch",
+      "productLaunch": "{{asset}} stellt ein bahnbrechendes Produkt vor",
+      "drugApproval": "Behörde genehmigt neues Medikament von {{asset}}",
+      "supplyDisruption": "Lieferengpässe treiben {{asset}} nach oben",
+      "safeHaven": "Anleger suchen Sicherheit: Nachfrage nach {{asset}} steigt sprunghaft",
+      "adoption": "Großes Zahlungsnetzwerk unterstützt jetzt {{asset}}",
+      "rateCut": "Zentralbank senkt den Zins um {{percent}} — {{asset}} legt zu",
+      "earningsMiss": "{{asset}} verfehlt die Gewinnprognose um {{percent}}",
+      "lawsuit": "{{asset}} droht eine große Sammelklage",
+      "recall_one": "{{asset}} ruft {{count, number}} Fahrzeug zurück",
+      "recall_other": "{{asset}} ruft {{count, number}} Fahrzeuge zurück",
+      "exchangeHack": "Börsen-Hack: {{asset}} aus Hot Wallets gestohlen",
+      "oversupply": "Sorgen vor Überangebot belasten {{asset}}",
+      "rateHike": "Überraschende Zinserhöhung um {{percent}} trifft {{asset}}",
+      "trialFailure": "Medikament von {{asset}} scheitert in der Spätphase",
+      "ceoExit": "CEO von {{asset}} tritt überraschend zurück"
+    }
+  },
+  "stats": {
+    "equity": "Eigenkapital",
+    "balance": "Kontostand",
+    "usedMargin": "Genutzte Margin",
+    "freeMargin": "Freie Margin",
+    "unrealizedPnl": "Unrealisierte G&V",
+    "realizedPnl": "Realisierte G&V",
+    "marginLevel": "Margin-Level",
+    "totalFees": "Gezahlte Gebühren",
+    "winRate": "Trefferquote",
+    "bestTrade": "Bester Trade",
+    "worstTrade": "Schlechtester Trade",
+    "averagePnl": "Durchschn. G&V",
+    "averageWin": "Durchschn. Gewinn",
+    "averageLoss": "Durchschn. Verlust",
+    "maxDrawdown": "Max. Drawdown",
+    "totalTrades": "Trades",
+    "winsLosses": "Gewinner / Verlierer",
+    "longestStreak": "Beste Gewinnserie",
+    "level": "Trader-Level",
+    "xp": "{{xp}} XP",
+    "nextLevel": "{{xp}} XP bis „{{level}}“",
+    "maxLevel": "Höchstes Level erreicht",
+    "levels": {
+      "novice": "Neuling",
+      "amateur": "Amateur",
+      "pro": "Profi",
+      "legend": "Legende"
+    }
+  },
+  "achievements": {
+    "progress": "{{unlocked}} von {{total}} freigeschaltet",
+    "unlockedAt": "Freigeschaltet am {{date}}",
+    "locked": "Gesperrt",
+    "xpReward": "+{{xp}} XP",
+    "items": {
+      "firstTrade": { "title": "Erste Schritte", "description": "Schließe deinen ersten Trade" },
+      "firstProfit": { "title": "Im Plus", "description": "Schließe einen Trade mit Gewinn" },
+      "tenTrades": {
+        "title": "Jetzt wird’s ernst",
+        "description_one": "Schließe {{count}} Trade",
+        "description_other": "Schließe {{count}} Trades"
+      },
+      "fiftyTrades": {
+        "title": "Stammgast",
+        "description_one": "Schließe {{count}} Trade",
+        "description_other": "Schließe {{count}} Trades"
+      },
+      "bigWin": {
+        "title": "Dicker Fisch",
+        "description": "Verdiene {{amount}} oder mehr mit einem Trade"
+      },
+      "highRoller": {
+        "title": "High Roller",
+        "description": "Eröffne eine Position mit Hebel x{{value}}"
+      },
+      "bearHunter": { "title": "Bärenjäger", "description": "Schließe einen profitablen Short" },
+      "diversified": {
+        "title": "Diversifiziert",
+        "description_one": "Handle {{count}} verschiedenen Wert",
+        "description_other": "Handle {{count}} verschiedene Werte"
+      },
+      "hotStreak": {
+        "title": "Glückssträhne",
+        "description_one": "Gewinne {{count}} Trade in Folge",
+        "description_other": "Gewinne {{count}} Trades in Folge"
+      },
+      "disciplined": {
+        "title": "Diszipliniert",
+        "description": "Sichere Gewinne mit einem Take-Profit"
+      },
+      "riskManager": {
+        "title": "Risikomanager",
+        "description": "Begrenze einen Verlust mit einem Stop-Loss"
+      },
+      "phoenix": {
+        "title": "Phönix",
+        "description": "Überstehe eine Liquidation und erreiche wieder das Startkapital"
+      },
+      "doubleUp": { "title": "Verdoppelt", "description": "Verdopple dein Startkapital" },
+      "multitasker": {
+        "title": "Multitasker",
+        "description_one": "Halte {{count}} Position gleichzeitig",
+        "description_other": "Halte {{count}} Positionen gleichzeitig"
+      }
+    }
+  },
+  "leaderboard": {
+    "empty": "Noch keine Rekorde. Beende eine Sitzung, um auf die Liste zu kommen.",
+    "rank": "#",
+    "date": "Datum",
+    "finalEquity": "Endkapital",
+    "return": "Rendite",
+    "trades": "Trades",
+    "winRate": "Trefferquote",
+    "bankrupt": "Bankrott"
+  },
+  "onboarding": {
+    "dialogTitle": "So wird gespielt",
+    "stepOf": "Schritt {{current}} von {{total}}",
+    "start": "Handel starten",
+    "steps": {
+      "welcome": {
+        "title": "Willkommen bei TradeSim!",
+        "body": "Du erhältst 10.000 $ virtuelles Kapital und 8 fiktive Werte. Die Kurse bewegen sich zufällig, News erschüttern den Markt. Ziel: Kapital vermehren, ohne pleitezugehen."
+      },
+      "chart": {
+        "title": "Den Markt lesen",
+        "body": "Wähle links einen Wert — sein Kerzenchart erscheint in der Mitte. Grüne Kerzen bedeuten steigende, rote fallende Kurse. Behalte die News im Blick: Sie bewegen die Preise."
+      },
+      "order": {
+        "title": "Einen Trade eröffnen",
+        "body": "Wähle Long, wenn du steigende Kurse erwartest, oder Short bei fallenden. Lege Margin, Hebel und am besten Stop-Loss und Take-Profit fest. Tastenkürzel: B — kaufen, S — verkaufen, Leertaste — Pause."
+      },
+      "risk": {
+        "title": "Risiko steuern",
+        "body": "Der Hebel vervielfacht Gewinne und Verluste. Verliert eine Position fast ihre gesamte Margin, wird sie liquidiert. Jeder Trade kostet 0,1 % Gebühr. Der Stop-Loss ist dein bester Freund."
+      }
+    }
+  },
+  "settings": {
+    "theme": "Design",
+    "themes": {
+      "system": "System",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "terminal": "Terminal"
+    },
+    "language": "Sprache",
+    "sound": "Soundeffekte",
+    "volume": "Lautstärke",
+    "speed": "Spieltempo",
+    "replayTutorial": "Tutorial wiederholen",
+    "newGame": "Neues Spiel starten",
+    "newGameTitle": "Neues Spiel starten?",
+    "newGameBody": "Offene Positionen werden geschlossen und dein aktuelles Ergebnis wird in die Bestenliste eingetragen. Erfolge und Level bleiben erhalten.",
+    "keyboard": "Tastenkürzel",
+    "keys": {
+      "space": "Leertaste",
+      "buy": "Kaufen / Long",
+      "sell": "Verkaufen / Short",
+      "pause": "Pause / fortsetzen"
+    },
+    "languages": {
+      "en": "English",
+      "ru": "Русский",
+      "es": "Español",
+      "zh": "中文",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
+  },
+  "gameOver": {
+    "title": "Bankrott",
+    "body": "Dein Kapital ist aufgebraucht. Das hat jeder Trader schon erlebt — sieh dir deine Statistik an, zieh die Lehren daraus und versuche es erneut.",
+    "finalEquity": "Endkapital"
+  },
+  "toasts": {
+    "positionOpened": "{{side}} {{asset}} eröffnet",
+    "positionOpenedBody": "{{margin}} × x{{leverage}} zu {{price}}",
+    "orderPlaced": "Limit-Order platziert",
+    "orderBody": "{{side}} {{asset}} zu {{price}}",
+    "orderFilled": "Limit-Order ausgeführt",
+    "orderCancelled": "Order storniert",
+    "positionClosed": "{{asset}}-Position geschlossen",
+    "pnlBody": "G&V: {{pnl}}",
+    "stopLoss": "Stop-Loss ausgelöst: {{asset}}",
+    "takeProfit": "Take-Profit ausgelöst: {{asset}}",
+    "liquidation": "Liquidation: {{asset}}",
+    "liquidationBody": "Verlorene Margin: {{amount}}",
+    "achievement": "Erfolg freigeschaltet!",
+    "levelUp": "Neues Level: {{level}}",
+    "news": "News · {{asset}}",
+    "bankrupt": "Spiel vorbei: Bankrott"
+  },
+  "errors": {
+    "unknownAsset": "Unbekannter Wert oder kein Preis verfügbar",
+    "invalidAmount": "Bitte einen gültigen Betrag eingeben",
+    "amountTooSmall": "Die Mindest-Margin beträgt {{min}}",
+    "invalidLeverage": "Nicht unterstützter Hebel",
+    "insufficientFunds": "Nicht genügend freie Margin",
+    "invalidLimitPrice": "Bitte einen gültigen Limitpreis eingeben",
+    "invalidStopLoss": "Stop-Loss muss bei Long unter und bei Short über dem Preis liegen",
+    "invalidTakeProfit": "Take-Profit muss bei Long über und bei Short unter dem Preis liegen",
+    "positionNotFound": "Position nicht gefunden — sie wurde womöglich bereits geschlossen",
+    "orderNotFound": "Order nicht gefunden — sie wurde womöglich bereits ausgeführt",
+    "marketClosed": "Handel nicht möglich: Das Spiel ist vorbei",
+    "duplicateAction": "Zu schnell — die Aktion wurde ignoriert",
+    "corruptedSave": "Der Spielstand war beschädigt und wurde zurückgesetzt",
+    "boundaryTitle": "Etwas ist schiefgelaufen",
+    "boundaryBody": "Ein unerwarteter Fehler ist aufgetreten. Ein Neuladen der Seite hilft meist.",
+    "reload": "Neu laden"
+  }
+}

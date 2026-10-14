@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Educational trading simulator with fictional market data" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>TradeSim</title>
+    <script>
+      // Apply the saved/system theme before first paint to avoid a colour flash.
+      (function () {
+        var theme = 'system';
+        try {
+          var raw = localStorage.getItem('trader-sim:settings');
+          var parsed = raw ? JSON.parse(raw) : null;
+          if (parsed && parsed.state && typeof parsed.state.theme === 'string')
+            theme = parsed.state.theme;
+        } catch (e) {
+          /* corrupted save: fall back to system theme */
+        }
+        if (theme === 'system') {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

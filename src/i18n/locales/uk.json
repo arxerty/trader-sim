@@ -1,0 +1,356 @@
+{
+  "common": {
+    "appName": "TradeSim",
+    "tagline": "Симулятор трейдера",
+    "disclaimer": "Гра навчальна, дані вигадані. Не є фінансовою рекомендацією.",
+    "pause": "Пауза",
+    "resume": "Продовжити",
+    "paused": "Пауза",
+    "live": "Торги тривають",
+    "speed": "Швидкість",
+    "speedValue": "{{value}}×",
+    "close": "Закрити",
+    "cancel": "Скасувати",
+    "confirm": "Підтвердити",
+    "back": "Назад",
+    "next": "Далі",
+    "skip": "Пропустити",
+    "restart": "Почати знову",
+    "settings": "Налаштування",
+    "notAvailable": "—",
+    "hotkeysHint": "Гарячі клавіші: B — купити, S — продати, Пробіл — пауза",
+    "dismiss": "Закрити сповіщення",
+    "notifications": "Сповіщення",
+    "mainNavigation": "Основна навігація",
+    "chartLabel": "Графік ціни {{asset}}",
+    "skipToContent": "Перейти до основного вмісту"
+  },
+  "nav": {
+    "trade": "Торгівля",
+    "portfolio": "Портфель",
+    "news": "Новини",
+    "progress": "Прогрес"
+  },
+  "sections": {
+    "watchlist": "Ринки",
+    "orderPanel": "Новий ордер",
+    "positions": "Позиції",
+    "orders": "Ордери",
+    "history": "Історія",
+    "news": "Новини",
+    "stats": "Статистика",
+    "achievements": "Досягнення",
+    "leaderboard": "Рекорди"
+  },
+  "assets": {
+    "NOVA": { "name": "Нова Текнолоджіс" },
+    "PTRX": { "name": "Петрокс Енерджі" },
+    "AURM": { "name": "Аурум Голд Траст" },
+    "BTCX": { "name": "Біткоінекс" },
+    "GX500": { "name": "Індекс Глобал X 500" },
+    "VOLT": { "name": "Вольтара Моторс" },
+    "MEDI": { "name": "Медікор Фарма" },
+    "AGRO": { "name": "Агрофілд Пшениця" }
+  },
+  "categories": {
+    "tech": "Технології",
+    "energy": "Нафта і газ",
+    "metal": "Золото",
+    "crypto": "Криптовалюта",
+    "index": "Індекс",
+    "auto": "Автопром",
+    "pharma": "Фармацевтика",
+    "agri": "Агросектор"
+  },
+  "trade": {
+    "long": "Лонг",
+    "short": "Шорт",
+    "buyLong": "Купити / Лонг",
+    "sellShort": "Продати / Шорт",
+    "orderType": "Тип ордера",
+    "market": "Ринковий",
+    "limit": "Лімітний",
+    "limitPrice": "Лімітна ціна",
+    "amountUsd": "Маржа, USD",
+    "shareOfFreeMargin": "Частка вільної маржі",
+    "leverage": "Плече",
+    "leverageValue": "x{{value}}",
+    "stopLoss": "Стоп-лос",
+    "takeProfit": "Тейк-профіт",
+    "optional": "необов’язково",
+    "price": "Ціна",
+    "change": "Зміна",
+    "notional": "Розмір позиції",
+    "quantity": "Кількість",
+    "fee": "Комісія ({{rate}})",
+    "liquidationPrice": "Ціна ліквідації",
+    "freeMargin": "Вільна маржа",
+    "asset": "Актив",
+    "side": "Напрям",
+    "entry": "Вхід",
+    "mark": "Поточна",
+    "exit": "Вихід",
+    "size": "Обсяг",
+    "pnl": "P&L",
+    "reason": "Причина",
+    "time": "Час",
+    "actions": "Дії",
+    "closePosition": "Закрити",
+    "closePositionAria": "Закрити позицію {{side}} по {{asset}}",
+    "cancelOrder": "Скасувати",
+    "cancelOrderAria": "Скасувати лімітний ордер по {{asset}}",
+    "noPositions": "Немає відкритих позицій",
+    "noOrders": "Немає активних ордерів",
+    "noHistory": "Закритих угод поки немає",
+    "positionsCount_one": "{{count}} відкрита позиція",
+    "positionsCount_few": "{{count}} відкриті позиції",
+    "positionsCount_many": "{{count}} відкритих позицій",
+    "positionsCount_other": "{{count}} відкритої позиції",
+    "tradesCount_one": "{{count}} угода",
+    "tradesCount_few": "{{count}} угоди",
+    "tradesCount_many": "{{count}} угод",
+    "tradesCount_other": "{{count}} угоди",
+    "selectAsset": "Оберіть актив",
+    "reasons": {
+      "manual": "Вручну",
+      "stopLoss": "Стоп-лос",
+      "takeProfit": "Тейк-профіт",
+      "liquidation": "Ліквідація"
+    }
+  },
+  "news": {
+    "empty": "Новин поки немає. Стежте за стрічкою…",
+    "positive": "Позитив",
+    "negative": "Негатив",
+    "impact": "Вплив: {{level}}",
+    "impactLevels": {
+      "low": "слабкий",
+      "medium": "середній",
+      "high": "сильний"
+    },
+    "templates": {
+      "earningsBeat_one": "{{asset}} перевершила прогноз прибутку {{count}} квартал поспіль",
+      "earningsBeat_few": "{{asset}} перевершила прогноз прибутку {{count}} квартали поспіль",
+      "earningsBeat_many": "{{asset}} перевершила прогноз прибутку {{count}} кварталів поспіль",
+      "earningsBeat_other": "{{asset}} перевершила прогноз прибутку {{count}} кварталу поспіль",
+      "analystUpgrade_one": "{{count}} аналітик підвищив рейтинг {{asset}} до «Купувати»",
+      "analystUpgrade_few": "{{count}} аналітики підвищили рейтинг {{asset}} до «Купувати»",
+      "analystUpgrade_many": "{{count}} аналітиків підвищили рейтинг {{asset}} до «Купувати»",
+      "analystUpgrade_other": "{{count}} аналітика підвищили рейтинг {{asset}} до «Купувати»",
+      "productLaunch": "{{asset}} представила проривний продукт",
+      "drugApproval": "Регулятор схвалив новий препарат {{asset}}",
+      "supplyDisruption": "Перебої з постачанням штовхають {{asset}} вгору",
+      "safeHaven": "Інвестори шукають захисту: попит на {{asset}} різко зріс",
+      "adoption": "Велика платіжна мережа додала підтримку {{asset}}",
+      "rateCut": "Центробанк знизив ставку на {{percent}} — {{asset}} зростає",
+      "earningsMiss": "{{asset}} не дотягнула до прогнозу прибутку на {{percent}}",
+      "lawsuit": "Проти {{asset}} подано великий колективний позов",
+      "recall_one": "{{asset}} відкликає {{count, number}} автомобіль",
+      "recall_few": "{{asset}} відкликає {{count, number}} автомобілі",
+      "recall_many": "{{asset}} відкликає {{count, number}} автомобілів",
+      "recall_other": "{{asset}} відкликає {{count, number}} автомобіля",
+      "exchangeHack": "Злам біржі: {{asset}} викрадено з гарячих гаманців",
+      "oversupply": "Побоювання надвиробництва тиснуть на {{asset}}",
+      "rateHike": "Несподіване підвищення ставки на {{percent}} б’є по {{asset}}",
+      "trialFailure": "Препарат {{asset}} провалив фінальну фазу випробувань",
+      "ceoExit": "CEO {{asset}} несподівано пішов у відставку"
+    }
+  },
+  "stats": {
+    "equity": "Капітал",
+    "balance": "Баланс",
+    "usedMargin": "Зайнята маржа",
+    "freeMargin": "Вільна маржа",
+    "unrealizedPnl": "Нереалізований P&L",
+    "realizedPnl": "Реалізований P&L",
+    "marginLevel": "Рівень маржі",
+    "totalFees": "Сплачено комісій",
+    "winRate": "Вінрейт",
+    "bestTrade": "Найкраща угода",
+    "worstTrade": "Найгірша угода",
+    "averagePnl": "Середній P&L",
+    "averageWin": "Середній прибуток",
+    "averageLoss": "Середній збиток",
+    "maxDrawdown": "Макс. просідання",
+    "totalTrades": "Угод",
+    "winsLosses": "Прибуткові / збиткові",
+    "longestStreak": "Найкраща серія перемог",
+    "level": "Рівень трейдера",
+    "xp": "{{xp}} XP",
+    "nextLevel": "{{xp}} XP до рівня «{{level}}»",
+    "maxLevel": "Досягнуто максимального рівня",
+    "levels": {
+      "novice": "Новачок",
+      "amateur": "Аматор",
+      "pro": "Профі",
+      "legend": "Легенда"
+    }
+  },
+  "achievements": {
+    "progress": "Відкрито {{unlocked}} з {{total}}",
+    "unlockedAt": "Отримано {{date}}",
+    "locked": "Не отримано",
+    "xpReward": "+{{xp}} XP",
+    "items": {
+      "firstTrade": { "title": "Перші кроки", "description": "Закрийте першу угоду" },
+      "firstProfit": { "title": "У плюсі", "description": "Закрийте угоду з прибутком" },
+      "tenTrades": {
+        "title": "Усе серйозно",
+        "description_one": "Закрийте {{count}} угоду",
+        "description_few": "Закрийте {{count}} угоди",
+        "description_many": "Закрийте {{count}} угод",
+        "description_other": "Закрийте {{count}} угоди"
+      },
+      "fiftyTrades": {
+        "title": "Завсідник ринку",
+        "description_one": "Закрийте {{count}} угоду",
+        "description_few": "Закрийте {{count}} угоди",
+        "description_many": "Закрийте {{count}} угод",
+        "description_other": "Закрийте {{count}} угоди"
+      },
+      "bigWin": {
+        "title": "Велика риба",
+        "description": "Заробіть {{amount}} або більше на одній угоді"
+      },
+      "highRoller": { "title": "Хайролер", "description": "Відкрийте позицію з плечем x{{value}}" },
+      "bearHunter": {
+        "title": "Мисливець на ведмедів",
+        "description": "Закрийте прибутковий шорт"
+      },
+      "diversified": {
+        "title": "Диверсифікація",
+        "description_one": "Поторгуйте {{count}} різним активом",
+        "description_few": "Поторгуйте {{count}} різними активами",
+        "description_many": "Поторгуйте {{count}} різними активами",
+        "description_other": "Поторгуйте {{count}} різними активами"
+      },
+      "hotStreak": {
+        "title": "Гаряча серія",
+        "description_one": "Виграйте {{count}} угоду поспіль",
+        "description_few": "Виграйте {{count}} угоди поспіль",
+        "description_many": "Виграйте {{count}} угод поспіль",
+        "description_other": "Виграйте {{count}} угоди поспіль"
+      },
+      "disciplined": { "title": "Дисципліна", "description": "Зафіксуйте прибуток тейк-профітом" },
+      "riskManager": { "title": "Ризик-менеджер", "description": "Обмежте збиток стоп-лосом" },
+      "phoenix": {
+        "title": "Фенікс",
+        "description": "Переживіть ліквідацію та відновіть стартовий капітал"
+      },
+      "doubleUp": { "title": "Подвоєння", "description": "Подвойте стартовий капітал" },
+      "multitasker": {
+        "title": "Багатозадачність",
+        "description_one": "Тримайте {{count}} позицію одночасно",
+        "description_few": "Тримайте {{count}} позиції одночасно",
+        "description_many": "Тримайте {{count}} позицій одночасно",
+        "description_other": "Тримайте {{count}} позиції одночасно"
+      }
+    }
+  },
+  "leaderboard": {
+    "empty": "Рекордів поки немає. Завершіть сесію, щоб потрапити до таблиці.",
+    "rank": "№",
+    "date": "Дата",
+    "finalEquity": "Підсумковий капітал",
+    "return": "Дохідність",
+    "trades": "Угоди",
+    "winRate": "Вінрейт",
+    "bankrupt": "Банкрут"
+  },
+  "onboarding": {
+    "dialogTitle": "Як грати",
+    "stepOf": "Крок {{current}} з {{total}}",
+    "start": "Почати торгівлю",
+    "steps": {
+      "welcome": {
+        "title": "Ласкаво просимо до TradeSim!",
+        "body": "У вас $10 000 віртуального капіталу та 8 вигаданих активів. Ціни рухаються випадково, новини розгойдують ринок. Мета — примножити капітал і не збанкрутувати."
+      },
+      "chart": {
+        "title": "Читайте ринок",
+        "body": "Оберіть актив у списку ліворуч — його свічковий графік з’явиться в центрі. Зелені свічки — ціна зросла, червоні — впала. Стежте за стрічкою новин: вона рухає ціни."
+      },
+      "order": {
+        "title": "Відкрийте угоду",
+        "body": "Оберіть Лонг, якщо чекаєте зростання, або Шорт, якщо чекаєте падіння. Вкажіть маржу, плече і, бажано, стоп-лос і тейк-профіт. Гарячі клавіші: B — купити, S — продати, Пробіл — пауза."
+      },
+      "risk": {
+        "title": "Керуйте ризиком",
+        "body": "Плече множить і прибуток, і збиток. Якщо позиція втрачає майже всю маржу — її ліквідують. Кожна угода коштує 0,1% комісії. Стоп-лос — ваш найкращий друг."
+      }
+    }
+  },
+  "settings": {
+    "theme": "Тема",
+    "themes": {
+      "system": "Системна",
+      "light": "Світла",
+      "dark": "Темна",
+      "terminal": "Термінал"
+    },
+    "language": "Мова",
+    "sound": "Звукові ефекти",
+    "volume": "Гучність",
+    "speed": "Швидкість гри",
+    "replayTutorial": "Пройти навчання знову",
+    "newGame": "Почати нову гру",
+    "newGameTitle": "Почати нову гру?",
+    "newGameBody": "Відкриті позиції буде закрито, а поточний результат потрапить до таблиці рекордів. Досягнення та рівень збережуться.",
+    "keyboard": "Гарячі клавіші",
+    "keys": {
+      "space": "Пробіл",
+      "buy": "Купити / Лонг",
+      "sell": "Продати / Шорт",
+      "pause": "Пауза / продовжити"
+    },
+    "languages": {
+      "en": "English",
+      "ru": "Русский",
+      "es": "Español",
+      "zh": "中文",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
+  },
+  "gameOver": {
+    "title": "Банкрутство",
+    "body": "Капітал закінчився. Через це проходив кожен трейдер — вивчіть статистику, зробіть висновки та спробуйте знову.",
+    "finalEquity": "Підсумковий капітал"
+  },
+  "toasts": {
+    "positionOpened": "{{side}} {{asset}} відкрито",
+    "positionOpenedBody": "{{margin}} × x{{leverage}} за {{price}}",
+    "orderPlaced": "Лімітний ордер виставлено",
+    "orderBody": "{{side}} {{asset}} за {{price}}",
+    "orderFilled": "Лімітний ордер виконано",
+    "orderCancelled": "Ордер скасовано",
+    "positionClosed": "Позицію {{asset}} закрито",
+    "pnlBody": "P&L: {{pnl}}",
+    "stopLoss": "Спрацював стоп-лос: {{asset}}",
+    "takeProfit": "Спрацював тейк-профіт: {{asset}}",
+    "liquidation": "Ліквідація: {{asset}}",
+    "liquidationBody": "Втрачено маржу: {{amount}}",
+    "achievement": "Нове досягнення!",
+    "levelUp": "Новий рівень: {{level}}",
+    "news": "Новина · {{asset}}",
+    "bankrupt": "Гру завершено: банкрутство"
+  },
+  "errors": {
+    "unknownAsset": "Невідомий актив або немає ціни",
+    "invalidAmount": "Введіть коректну суму",
+    "amountTooSmall": "Мінімальна маржа — {{min}}",
+    "invalidLeverage": "Неприпустиме плече",
+    "insufficientFunds": "Недостатньо вільної маржі",
+    "invalidLimitPrice": "Введіть коректну лімітну ціну",
+    "invalidStopLoss": "Стоп-лос має бути нижче ціни для лонгу та вище — для шорту",
+    "invalidTakeProfit": "Тейк-профіт має бути вище ціни для лонгу та нижче — для шорту",
+    "positionNotFound": "Позицію не знайдено — можливо, її вже закрито",
+    "orderNotFound": "Ордер не знайдено — можливо, його вже виконано",
+    "marketClosed": "Торгівля недоступна: гру завершено",
+    "duplicateAction": "Занадто швидко — дію проігноровано",
+    "corruptedSave": "Збереження було пошкоджено та скинуто",
+    "boundaryTitle": "Щось пішло не так",
+    "boundaryBody": "Сталася непередбачена помилка. Зазвичай допомагає перезавантаження сторінки.",
+    "reload": "Перезавантажити"
+  }
+}
