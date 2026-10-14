@@ -18,3 +18,9 @@ npm-debug.log*
 .DS_Store
 *.suo
 *.sw?
+
+# monorepo
+apps/*/dist
+packages/*/dist
+**/node_modules/.cache
+.claude/

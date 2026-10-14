@@ -1,0 +1,592 @@
+{
+  "common": {
+    "appName": "TradeSim",
+    "tagline": "Simulador de trading",
+    "disclaimer": "Juego educativo con datos ficticios. No constituye asesoramiento financiero.",
+    "pause": "Pausa",
+    "resume": "Reanudar",
+    "paused": "En pausa",
+    "live": "En vivo",
+    "speed": "Velocidad",
+    "speedValue": "{{value}}×",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "skip": "Omitir",
+    "restart": "Empezar de nuevo",
+    "settings": "Ajustes",
+    "notAvailable": "—",
+    "hotkeysHint": "Atajos: B — comprar, S — vender, Espacio — pausa",
+    "dismiss": "Cerrar notificación",
+    "notifications": "Notificaciones",
+    "mainNavigation": "Navegación principal",
+    "chartLabel": "Gráfico de precios de {{asset}}",
+    "skipToContent": "Saltar al contenido principal",
+    "loading": "Cargando…",
+    "retry": "Reintentar"
+  },
+  "nav": {
+    "trade": "Operar",
+    "portfolio": "Cartera",
+    "news": "Noticias",
+    "progress": "Progreso"
+  },
+  "sections": {
+    "watchlist": "Mercados",
+    "orderPanel": "Nueva orden",
+    "positions": "Posiciones",
+    "orders": "Órdenes",
+    "history": "Historial",
+    "news": "Noticias",
+    "stats": "Estadísticas",
+    "achievements": "Logros",
+    "leaderboard": "Récords"
+  },
+  "assets": {
+    "NOVA": {
+      "name": "Nova Technologies"
+    },
+    "PTRX": {
+      "name": "Petrox Energía"
+    },
+    "AURM": {
+      "name": "Aurum Gold Trust"
+    },
+    "BTCX": {
+      "name": "Bitcoinex"
+    },
+    "GX500": {
+      "name": "Índice Global X 500"
+    },
+    "VOLT": {
+      "name": "Voltara Motors"
+    },
+    "MEDI": {
+      "name": "Medicor Farma"
+    },
+    "AGRO": {
+      "name": "Trigo Agrofield"
+    }
+  },
+  "categories": {
+    "tech": "Tecnología",
+    "energy": "Petróleo y gas",
+    "metal": "Oro",
+    "crypto": "Cripto",
+    "index": "Índice",
+    "auto": "Automoción",
+    "pharma": "Farmacéutica",
+    "agri": "Agricultura"
+  },
+  "trade": {
+    "long": "Largo",
+    "short": "Corto",
+    "buyLong": "Comprar / Largo",
+    "sellShort": "Vender / Corto",
+    "orderType": "Tipo de orden",
+    "market": "Mercado",
+    "limit": "Límite",
+    "limitPrice": "Precio límite",
+    "amountUsd": "Margen, USD",
+    "shareOfFreeMargin": "Parte del margen libre",
+    "leverage": "Apalancamiento",
+    "leverageValue": "x{{value}}",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "optional": "opcional",
+    "price": "Precio",
+    "change": "Cambio",
+    "notional": "Tamaño de la posición",
+    "quantity": "Cantidad",
+    "fee": "Comisión ({{rate}})",
+    "liquidationPrice": "Precio de liquidación",
+    "freeMargin": "Margen libre",
+    "asset": "Activo",
+    "side": "Dirección",
+    "entry": "Entrada",
+    "mark": "Actual",
+    "exit": "Salida",
+    "size": "Tamaño",
+    "pnl": "P&L",
+    "reason": "Motivo",
+    "time": "Hora",
+    "actions": "Acciones",
+    "closePosition": "Cerrar",
+    "closePositionAria": "Cerrar posición {{side}} en {{asset}}",
+    "cancelOrder": "Cancelar",
+    "cancelOrderAria": "Cancelar orden límite en {{asset}}",
+    "noPositions": "No hay posiciones abiertas",
+    "noOrders": "No hay órdenes pendientes",
+    "noHistory": "Aún no hay operaciones cerradas",
+    "positionsCount_one": "{{count}} posición abierta",
+    "positionsCount_many": "{{count}} posiciones abiertas",
+    "positionsCount_other": "{{count}} posiciones abiertas",
+    "tradesCount_one": "{{count}} operación",
+    "tradesCount_many": "{{count}} operaciones",
+    "tradesCount_other": "{{count}} operaciones",
+    "selectAsset": "Elegir activo",
+    "reasons": {
+      "manual": "Manual",
+      "stopLoss": "Stop-Loss",
+      "takeProfit": "Take-Profit",
+      "liquidation": "Liquidación"
+    }
+  },
+  "news": {
+    "empty": "Aún no hay noticias. Mantente atento…",
+    "positive": "Alcista",
+    "negative": "Bajista",
+    "impact": "Impacto: {{level}}",
+    "impactLevels": {
+      "low": "bajo",
+      "medium": "medio",
+      "high": "alto"
+    },
+    "templates": {
+      "earningsBeat_one": "{{asset}} supera las previsiones de beneficios por {{count}} trimestre consecutivo",
+      "earningsBeat_many": "{{asset}} supera las previsiones de beneficios por {{count}} trimestres consecutivos",
+      "earningsBeat_other": "{{asset}} supera las previsiones de beneficios por {{count}} trimestres consecutivos",
+      "analystUpgrade_one": "{{count}} analista eleva {{asset}} a «Comprar»",
+      "analystUpgrade_many": "{{count}} analistas elevan {{asset}} a «Comprar»",
+      "analystUpgrade_other": "{{count}} analistas elevan {{asset}} a «Comprar»",
+      "productLaunch": "{{asset}} presenta un producto revolucionario",
+      "drugApproval": "El regulador aprueba un nuevo fármaco de {{asset}}",
+      "supplyDisruption": "Problemas de suministro impulsan a {{asset}}",
+      "safeHaven": "Los inversores buscan refugio: se dispara la demanda de {{asset}}",
+      "adoption": "Una gran red de pagos añade soporte para {{asset}}",
+      "rateCut": "El banco central recorta los tipos un {{percent}}: {{asset}} se dispara",
+      "earningsMiss": "{{asset}} incumple su previsión de beneficios en un {{percent}}",
+      "lawsuit": "{{asset}} afronta una gran demanda colectiva",
+      "recall_one": "{{asset}} llama a revisión {{count, number}} vehículo",
+      "recall_many": "{{asset}} llama a revisión {{count, number}} vehículos",
+      "recall_other": "{{asset}} llama a revisión {{count, number}} vehículos",
+      "exchangeHack": "Hackeo de exchange: roban {{asset}} de monederos calientes",
+      "oversupply": "El temor al exceso de oferta lastra a {{asset}}",
+      "rateHike": "Una subida inesperada de tipos del {{percent}} golpea a {{asset}}",
+      "trialFailure": "Un fármaco de {{asset}} fracasa en la fase final de ensayos",
+      "ceoExit": "El CEO de {{asset}} dimite por sorpresa"
+    }
+  },
+  "stats": {
+    "equity": "Patrimonio",
+    "balance": "Saldo",
+    "usedMargin": "Margen usado",
+    "freeMargin": "Margen libre",
+    "unrealizedPnl": "P&L no realizado",
+    "realizedPnl": "P&L realizado",
+    "marginLevel": "Nivel de margen",
+    "totalFees": "Comisiones pagadas",
+    "winRate": "Tasa de acierto",
+    "bestTrade": "Mejor operación",
+    "worstTrade": "Peor operación",
+    "averagePnl": "P&L medio",
+    "averageWin": "Ganancia media",
+    "averageLoss": "Pérdida media",
+    "maxDrawdown": "Máx. drawdown",
+    "totalTrades": "Operaciones",
+    "winsLosses": "Ganadoras / perdedoras",
+    "longestStreak": "Mejor racha",
+    "level": "Nivel de trader",
+    "xp": "{{xp}} XP",
+    "nextLevel": "{{xp}} XP hasta «{{level}}»",
+    "maxLevel": "Nivel máximo alcanzado",
+    "levels": {
+      "novice": "Novato",
+      "amateur": "Aficionado",
+      "pro": "Profesional",
+      "legend": "Leyenda"
+    }
+  },
+  "achievements": {
+    "progress": "{{unlocked}} de {{total}} desbloqueados",
+    "unlockedAt": "Desbloqueado el {{date}}",
+    "locked": "Bloqueado",
+    "xpReward": "+{{xp}} XP",
+    "items": {
+      "firstTrade": {
+        "title": "Primeros pasos",
+        "description": "Cierra tu primera operación"
+      },
+      "firstProfit": {
+        "title": "En verde",
+        "description": "Cierra una operación con beneficio"
+      },
+      "tenTrades": {
+        "title": "Va en serio",
+        "description_one": "Cierra {{count}} operación",
+        "description_many": "Cierra {{count}} operaciones",
+        "description_other": "Cierra {{count}} operaciones"
+      },
+      "fiftyTrades": {
+        "title": "Habitual del mercado",
+        "description_one": "Cierra {{count}} operación",
+        "description_many": "Cierra {{count}} operaciones",
+        "description_other": "Cierra {{count}} operaciones"
+      },
+      "bigWin": {
+        "title": "Pez gordo",
+        "description": "Gana {{amount}} o más en una sola operación"
+      },
+      "highRoller": {
+        "title": "Gran apostador",
+        "description": "Abre una posición con apalancamiento x{{value}}"
+      },
+      "bearHunter": {
+        "title": "Cazador de osos",
+        "description": "Cierra un corto con beneficio"
+      },
+      "diversified": {
+        "title": "Diversificado",
+        "description_one": "Opera con {{count}} activo distinto",
+        "description_many": "Opera con {{count}} activos distintos",
+        "description_other": "Opera con {{count}} activos distintos"
+      },
+      "hotStreak": {
+        "title": "Racha ganadora",
+        "description_one": "Gana {{count}} operación seguida",
+        "description_many": "Gana {{count}} operaciones seguidas",
+        "description_other": "Gana {{count}} operaciones seguidas"
+      },
+      "disciplined": {
+        "title": "Disciplinado",
+        "description": "Asegura beneficios con un Take-Profit"
+      },
+      "riskManager": {
+        "title": "Gestor de riesgo",
+        "description": "Limita una pérdida con un Stop-Loss"
+      },
+      "phoenix": {
+        "title": "Fénix",
+        "description": "Sufre una liquidación y recupera el capital inicial"
+      },
+      "doubleUp": {
+        "title": "Doble o nada",
+        "description": "Duplica tu capital inicial"
+      },
+      "multitasker": {
+        "title": "Multitarea",
+        "description_one": "Mantén {{count}} posición a la vez",
+        "description_many": "Mantén {{count}} posiciones a la vez",
+        "description_other": "Mantén {{count}} posiciones a la vez"
+      }
+    }
+  },
+  "leaderboard": {
+    "empty": "Aún no hay récords. Termina una sesión para entrar en la tabla.",
+    "rank": "#",
+    "date": "Fecha",
+    "finalEquity": "Patrimonio final",
+    "return": "Rentabilidad",
+    "trades": "Operaciones",
+    "winRate": "Acierto",
+    "bankrupt": "En quiebra"
+  },
+  "onboarding": {
+    "dialogTitle": "Cómo jugar",
+    "stepOf": "Paso {{current}} de {{total}}",
+    "start": "Empezar a operar",
+    "steps": {
+      "welcome": {
+        "title": "¡Bienvenido a TradeSim!",
+        "body": "Tienes 10 000 $ de capital virtual y 8 activos ficticios. Los precios se mueven al azar y las noticias sacuden el mercado. Tu objetivo: hacer crecer el capital sin quebrar."
+      },
+      "chart": {
+        "title": "Lee el mercado",
+        "body": "Elige un activo en la lista de la izquierda: su gráfico de velas aparecerá en el centro. Las velas verdes indican subida y las rojas, bajada. Sigue las noticias: mueven los precios."
+      },
+      "order": {
+        "title": "Abre una operación",
+        "body": "Elige Largo si esperas una subida o Corto si esperas una caída. Indica el margen, el apalancamiento y, a ser posible, Stop-Loss y Take-Profit. Atajos: B — comprar, S — vender, Espacio — pausa."
+      },
+      "risk": {
+        "title": "Gestiona el riesgo",
+        "body": "El apalancamiento multiplica tanto las ganancias como las pérdidas. Si una posición pierde casi todo su margen, se liquida. Cada operación cuesta un 0,1 % de comisión. El Stop-Loss es tu mejor amigo."
+      }
+    }
+  },
+  "settings": {
+    "theme": "Tema",
+    "themes": {
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Oscuro",
+      "terminal": "Terminal"
+    },
+    "language": "Idioma",
+    "sound": "Efectos de sonido",
+    "volume": "Volumen",
+    "speed": "Velocidad del juego",
+    "replayTutorial": "Repetir tutorial",
+    "newGame": "Empezar una partida nueva",
+    "newGameTitle": "¿Empezar una partida nueva?",
+    "newGameBody": "Las posiciones abiertas se cerrarán y tu resultado actual se añadirá a la tabla de récords. Los logros y el nivel se conservan.",
+    "keyboard": "Atajos de teclado",
+    "keys": {
+      "space": "Espacio",
+      "buy": "Comprar / Largo",
+      "sell": "Vender / Corto",
+      "pause": "Pausar / reanudar"
+    },
+    "languages": {
+      "en": "English",
+      "ru": "Русский",
+      "es": "Español",
+      "zh": "中文",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
+  },
+  "gameOver": {
+    "title": "En quiebra",
+    "body": "Te has quedado sin capital. Todo trader ha pasado por esto: revisa tus estadísticas, aprende la lección y vuelve a intentarlo.",
+    "finalEquity": "Patrimonio final"
+  },
+  "toasts": {
+    "positionOpened": "{{side}} {{asset}} abierto",
+    "positionOpenedBody": "{{margin}} × x{{leverage}} a {{price}}",
+    "orderPlaced": "Orden límite colocada",
+    "orderBody": "{{side}} {{asset}} a {{price}}",
+    "orderFilled": "Orden límite ejecutada",
+    "orderCancelled": "Orden cancelada",
+    "positionClosed": "Posición en {{asset}} cerrada",
+    "pnlBody": "P&L: {{pnl}}",
+    "stopLoss": "Stop-Loss activado: {{asset}}",
+    "takeProfit": "Take-Profit activado: {{asset}}",
+    "liquidation": "Liquidación: {{asset}}",
+    "liquidationBody": "Margen perdido: {{amount}}",
+    "achievement": "¡Logro desbloqueado!",
+    "levelUp": "Nuevo nivel: {{level}}",
+    "news": "Noticia · {{asset}}",
+    "bankrupt": "Fin de la partida: quiebra"
+  },
+  "errors": {
+    "unknownAsset": "Activo desconocido o sin precio",
+    "invalidAmount": "Introduce un importe válido",
+    "amountTooSmall": "El margen mínimo es {{min}}",
+    "invalidLeverage": "Apalancamiento no admitido",
+    "insufficientFunds": "Margen libre insuficiente",
+    "invalidLimitPrice": "Introduce un precio límite válido",
+    "invalidStopLoss": "El Stop-Loss debe estar por debajo del precio en Largo y por encima en Corto",
+    "invalidTakeProfit": "El Take-Profit debe estar por encima del precio en Largo y por debajo en Corto",
+    "positionNotFound": "Posición no encontrada: puede que ya esté cerrada",
+    "orderNotFound": "Orden no encontrada: puede que ya se haya ejecutado",
+    "marketClosed": "No se puede operar: la partida ha terminado",
+    "duplicateAction": "Demasiado rápido: la acción se ha ignorado",
+    "corruptedSave": "La partida guardada estaba dañada y se ha reiniciado",
+    "boundaryTitle": "Algo ha salido mal",
+    "boundaryBody": "Se ha producido un error inesperado. Recargar la página suele ayudar.",
+    "reload": "Recargar"
+  },
+  "apiErrors": {
+    "VALIDATION_ERROR": "Revisa los datos introducidos",
+    "UNAUTHORIZED": "Inicia sesión",
+    "FORBIDDEN": "Acceso denegado",
+    "NOT_FOUND": "No encontrado",
+    "CONFLICT": "Los datos han cambiado, inténtalo de nuevo",
+    "RATE_LIMITED": "Demasiadas solicitudes. Espera un minuto",
+    "CSRF_INVALID": "Falló la comprobación de seguridad. Recarga la página",
+    "INTERNAL_ERROR": "Error del servidor. Inténtalo más tarde",
+    "EMAIL_TAKEN": "Este e-mail ya está registrado",
+    "NICKNAME_TAKEN": "Este apodo ya está en uso",
+    "NICKNAME_INVALID": "El apodo solo puede contener letras latinas, números y _",
+    "NICKNAME_FORBIDDEN": "Este apodo no está permitido",
+    "INVALID_CREDENTIALS": "E-mail o contraseña incorrectos",
+    "TOKEN_INVALID": "El enlace o la sesión no son válidos",
+    "TOKEN_EXPIRED": "El enlace o la sesión han caducado",
+    "PROVIDER_DISABLED": "Este método de acceso está desactivado",
+    "RUN_NOT_FOUND": "Partida no encontrada",
+    "RUN_NOT_ACTIVE": "Esta partida ya ha terminado",
+    "RUN_ALREADY_ACTIVE": "Ya tienes una partida clasificatoria en curso",
+    "RUN_EXPIRED": "La partida clasificatoria ha caducado",
+    "ACTIONS_INVALID": "El servidor rechazó el registro de acciones",
+    "ACTIONS_TOO_FAST": "La partida avanzó más rápido de lo permitido",
+    "ACTIONS_LIMIT": "Demasiadas acciones en la partida",
+    "DAILY_ALREADY_PLAYED": "Ya has jugado el reto de hoy",
+    "USER_NOT_FOUND": "Jugador no encontrado",
+    "CANNOT_FRIEND_SELF": "No puedes añadirte a ti mismo",
+    "FRIEND_REQUEST_EXISTS": "La solicitud ya fue enviada",
+    "ALREADY_FRIENDS": "Ya sois amigos",
+    "VERSION_CONFLICT": "Los ajustes se cambiaron en otro dispositivo",
+    "NETWORK": "Sin conexión con el servidor",
+    "UNKNOWN": "Algo ha salido mal"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Contraseña",
+    "nickname": "Apodo",
+    "nicknameHint": "{{min}}–{{max}} caracteres: letras latinas, números, _",
+    "passwordHint": "Al menos {{min}} caracteres",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "createAccount": "Crear cuenta",
+    "forgotLink": "¿Olvidaste la contraseña?",
+    "noAccount": "Crear una cuenta",
+    "haveAccount": "¿Ya tienes cuenta? Inicia sesión",
+    "forgotIntro": "Indica tu e-mail y te enviaremos un enlace para restablecer la contraseña.",
+    "forgotSent": "Si existe una cuenta con este e-mail, hemos enviado un enlace.",
+    "sendLink": "Enviar enlace",
+    "backToSignIn": "Volver al inicio de sesión",
+    "newPassword": "Nueva contraseña",
+    "confirmPassword": "Repite la contraseña",
+    "setPassword": "Guardar contraseña",
+    "resetDone": "Contraseña cambiada. Se cerraron las demás sesiones.",
+    "verified": "E-mail confirmado. ¡Gracias!",
+    "importGuest_one": "Vincular mi progreso local: {{xp}} XP y {{count}} logro",
+    "importGuest_many": "Vincular mi progreso local: {{xp}} XP y {{count}} logros",
+    "importGuest_other": "Vincular mi progreso local: {{xp}} XP y {{count}} logros",
+    "privacyNote": "Solo guardamos tu e-mail, apodo y resultados. Puedes exportar o borrar tus datos en cualquier momento.",
+    "continueWith": {
+      "google": "Continuar con Google",
+      "github": "Continuar con GitHub"
+    },
+    "titles": {
+      "login": "Iniciar sesión",
+      "register": "Crear cuenta",
+      "forgot": "Restablecer contraseña",
+      "reset": "Nueva contraseña",
+      "verify": "Confirmación de e-mail"
+    },
+    "validation": {
+      "email": "Introduce un e-mail válido",
+      "required": "Campo obligatorio",
+      "nickname": "{{min}}–{{max}} caracteres: letras latinas, números y _",
+      "password": "Al menos {{min}} caracteres",
+      "mismatch": "Las contraseñas no coinciden"
+    }
+  },
+  "account": {
+    "menu": "Menú de la cuenta",
+    "title": "Cuenta",
+    "verified": "confirmado",
+    "notVerified": "sin confirmar",
+    "resend": "Reenviar confirmación",
+    "verificationSent": "E-mail de confirmación enviado",
+    "hideFromLeaderboard": "Ocultar mi perfil de las clasificaciones",
+    "export": "Exportar mis datos",
+    "logoutAll": "Cerrar sesión en todas partes",
+    "sessionsRevoked_one": "{{count}} sesión cerrada",
+    "sessionsRevoked_many": "{{count}} sesiones cerradas",
+    "sessionsRevoked_other": "{{count}} sesiones cerradas",
+    "delete": "Eliminar cuenta",
+    "deleteTitle": "¿Eliminar la cuenta?",
+    "deleteBody": "Tu perfil, partidas, logros y récords se eliminarán para siempre.",
+    "deleteConfirm": "Eliminar para siempre",
+    "deleted": "Cuenta eliminada",
+    "passwordConfirm": "Contraseña",
+    "passwordConfirmHint": "Las cuentas de Google/GitHub pueden dejarlo vacío"
+  },
+  "community": {
+    "title": "Comunidad",
+    "tabs": {
+      "leaderboard": "Clasificaciones",
+      "daily": "Reto diario",
+      "friends": "Amigos",
+      "profile": "Perfil"
+    }
+  },
+  "online": {
+    "player": "Jugador",
+    "level": "Nivel",
+    "types": {
+      "equity": "Capital final",
+      "roi": "ROI",
+      "bestTrade": "Mejor operación",
+      "streak": "Racha ganadora",
+      "risk": "Puntuación de riesgo"
+    },
+    "typeHints": {
+      "equity": "Capital al final de una partida verificada",
+      "roi": "Rentabilidad sobre el capital inicial",
+      "bestTrade": "La operación más rentable",
+      "streak": "La serie más larga de operaciones con beneficio",
+      "risk": "Beneficio ajustado por drawdown (tipo Sharpe): el crecimiento estable supera a los golpes de suerte"
+    },
+    "periods": {
+      "all": "Global",
+      "week": "Semana",
+      "season": "Temporada",
+      "daily": "Diario",
+      "friends": "Amigos"
+    },
+    "periodLabel": "Periodo de la clasificación",
+    "metric": "Métrica",
+    "season": "Temporada",
+    "friendsLocked": "Inicia sesión para competir con amigos",
+    "empty": "Aún no hay resultados",
+    "emptyHint": "Juega una partida clasificatoria y sé el primero.",
+    "loadMore": "Mostrar más",
+    "myPosition": "Mi posición",
+    "notRanked": "Todavía no estás en esta clasificación."
+  },
+  "daily": {
+    "title": "Reto del {{date}}",
+    "description": "Hoy todos juegan el mismo mercado. Un intento puntuable al día.",
+    "resetsIn": "Nuevo reto en",
+    "participants": "Participantes",
+    "yourResult": "Tu resultado",
+    "yourRank": "Tu puesto",
+    "signInToPlay": "Inicia sesión para jugar",
+    "played": "Ya has jugado hoy. ¡Vuelve mañana!",
+    "play": "Jugar el reto",
+    "continue": "Continuar",
+    "inProgressElsewhere": "Tu intento está en curso en otro dispositivo."
+  },
+  "friends": {
+    "signInTitle": "Inicia sesión para añadir amigos",
+    "invalidNickname": "Introduce un apodo válido",
+    "addLabel": "Añadir amigo por apodo",
+    "addPlaceholder": "apodo",
+    "send": "Enviar",
+    "nowFriends": "¡Ahora sois amigos!",
+    "requestSent": "Solicitud enviada",
+    "incoming_one": "{{count}} solicitud recibida",
+    "incoming_many": "{{count}} solicitudes recibidas",
+    "incoming_other": "{{count}} solicitudes recibidas",
+    "accept": "Aceptar",
+    "decline": "Rechazar",
+    "title": "Amigos",
+    "empty": "Aún no tienes amigos",
+    "emptyHint": "Añade jugadores por apodo para comparar resultados.",
+    "since": "amigos desde el {{date}}",
+    "removeAria": "Eliminar a {{nickname}} de amigos",
+    "remove": "Eliminar",
+    "outgoing": "Solicitudes enviadas",
+    "pending": "pendiente"
+  },
+  "profile": {
+    "signInTitle": "Crea una cuenta para tener un perfil público",
+    "memberSince": "desde el {{date}}",
+    "friend": "amigo",
+    "runs": "Partidas clasificatorias",
+    "bestEquity": "Mejor capital",
+    "bestRoi": "Mejor ROI",
+    "noAchievements": "Aún no hay logros",
+    "bestRuns": "Mejores partidas",
+    "noRuns": "Aún no hay partidas verificadas"
+  },
+  "ranked": {
+    "modes": {
+      "standard": "Clasificatoria",
+      "daily": "Diario"
+    },
+    "queued": "Resultado en cola",
+    "queuedHint": "Sin conexión: el resultado se enviará automáticamente al recuperar la red.",
+    "practice": "Modo práctica",
+    "play": "Jugar clasificatoria",
+    "activeHint_one": "El servidor verificará la partida repitiéndola. {{count}} acción pendiente de sincronizar.",
+    "activeHint_many": "El servidor verificará la partida repitiéndola. {{count}} acciones pendientes de sincronizar.",
+    "activeHint_other": "El servidor verificará la partida repitiéndola. {{count}} acciones pendientes de sincronizar.",
+    "finish": "Terminar",
+    "started": {
+      "standard": "Partida clasificatoria iniciada",
+      "daily": "Reto diario iniciado"
+    },
+    "lost": "La partida ya no puede clasificar: continúa como práctica",
+    "flagged": "Resultado enviado a revisión",
+    "accepted": "¡Resultado verificado y clasificado!",
+    "unranked": "Partida verificada (sin clasificar)",
+    "startFailed": "No se pudo iniciar una partida clasificatoria"
+  }
+}

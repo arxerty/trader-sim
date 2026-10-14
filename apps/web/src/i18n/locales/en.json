@@ -1,0 +1,578 @@
+{
+  "common": {
+    "appName": "TradeSim",
+    "tagline": "Trading simulator",
+    "disclaimer": "Educational game with fictional data. This is not financial advice.",
+    "pause": "Pause",
+    "resume": "Resume",
+    "paused": "Paused",
+    "live": "Live",
+    "speed": "Speed",
+    "speedValue": "{{value}}×",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip",
+    "restart": "Start over",
+    "settings": "Settings",
+    "notAvailable": "—",
+    "hotkeysHint": "Hotkeys: B — buy, S — sell, Space — pause",
+    "dismiss": "Dismiss notification",
+    "notifications": "Notifications",
+    "mainNavigation": "Main navigation",
+    "chartLabel": "Price chart for {{asset}}",
+    "skipToContent": "Skip to main content",
+    "loading": "Loading…",
+    "retry": "Try again"
+  },
+  "nav": {
+    "trade": "Trade",
+    "portfolio": "Portfolio",
+    "news": "News",
+    "progress": "Progress"
+  },
+  "sections": {
+    "watchlist": "Markets",
+    "orderPanel": "New order",
+    "positions": "Positions",
+    "orders": "Orders",
+    "history": "History",
+    "news": "News",
+    "stats": "Statistics",
+    "achievements": "Achievements",
+    "leaderboard": "Leaderboard"
+  },
+  "assets": {
+    "NOVA": {
+      "name": "Nova Technologies"
+    },
+    "PTRX": {
+      "name": "Petrox Energy"
+    },
+    "AURM": {
+      "name": "Aurum Gold Trust"
+    },
+    "BTCX": {
+      "name": "Bitcoinex"
+    },
+    "GX500": {
+      "name": "Global X 500 Index"
+    },
+    "VOLT": {
+      "name": "Voltara Motors"
+    },
+    "MEDI": {
+      "name": "Medicor Pharma"
+    },
+    "AGRO": {
+      "name": "Agrofield Wheat"
+    }
+  },
+  "categories": {
+    "tech": "Technology",
+    "energy": "Oil & gas",
+    "metal": "Gold",
+    "crypto": "Crypto",
+    "index": "Index",
+    "auto": "Automotive",
+    "pharma": "Pharma",
+    "agri": "Agriculture"
+  },
+  "trade": {
+    "long": "Long",
+    "short": "Short",
+    "buyLong": "Buy / Long",
+    "sellShort": "Sell / Short",
+    "orderType": "Order type",
+    "market": "Market",
+    "limit": "Limit",
+    "limitPrice": "Limit price",
+    "amountUsd": "Margin, USD",
+    "shareOfFreeMargin": "Share of free margin",
+    "leverage": "Leverage",
+    "leverageValue": "x{{value}}",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "optional": "optional",
+    "price": "Price",
+    "change": "Change",
+    "notional": "Position size",
+    "quantity": "Quantity",
+    "fee": "Fee ({{rate}})",
+    "liquidationPrice": "Liquidation price",
+    "freeMargin": "Free margin",
+    "asset": "Asset",
+    "side": "Side",
+    "entry": "Entry",
+    "mark": "Mark",
+    "exit": "Exit",
+    "size": "Size",
+    "pnl": "P&L",
+    "reason": "Reason",
+    "time": "Time",
+    "actions": "Actions",
+    "closePosition": "Close",
+    "closePositionAria": "Close {{side}} position on {{asset}}",
+    "cancelOrder": "Cancel",
+    "cancelOrderAria": "Cancel limit order on {{asset}}",
+    "noPositions": "No open positions",
+    "noOrders": "No pending orders",
+    "noHistory": "No closed trades yet",
+    "positionsCount_one": "{{count}} open position",
+    "positionsCount_other": "{{count}} open positions",
+    "tradesCount_one": "{{count}} trade",
+    "tradesCount_other": "{{count}} trades",
+    "selectAsset": "Select asset",
+    "reasons": {
+      "manual": "Manual",
+      "stopLoss": "Stop-Loss",
+      "takeProfit": "Take-Profit",
+      "liquidation": "Liquidation"
+    }
+  },
+  "news": {
+    "empty": "No news yet. Stay tuned…",
+    "positive": "Bullish",
+    "negative": "Bearish",
+    "impact": "Impact: {{level}}",
+    "impactLevels": {
+      "low": "low",
+      "medium": "medium",
+      "high": "high"
+    },
+    "templates": {
+      "earningsBeat_one": "{{asset}} beats earnings forecasts for {{count}} quarter in a row",
+      "earningsBeat_other": "{{asset}} beats earnings forecasts for {{count}} quarters in a row",
+      "analystUpgrade_one": "{{count}} analyst upgrades {{asset}} to “Buy”",
+      "analystUpgrade_other": "{{count}} analysts upgrade {{asset}} to “Buy”",
+      "productLaunch": "{{asset}} unveils a breakthrough product",
+      "drugApproval": "Regulator approves a new {{asset}} drug",
+      "supplyDisruption": "Supply disruption sends {{asset}} higher",
+      "safeHaven": "Investors seek safety: demand for {{asset}} jumps",
+      "adoption": "Major payment network adds support for {{asset}}",
+      "rateCut": "Central bank cuts rates by {{percent}} — {{asset}} rallies",
+      "earningsMiss": "{{asset}} misses profit forecast by {{percent}}",
+      "lawsuit": "{{asset}} hit with a major class-action lawsuit",
+      "recall_one": "{{asset}} recalls {{count, number}} vehicle",
+      "recall_other": "{{asset}} recalls {{count, number}} vehicles",
+      "exchangeHack": "Exchange hack: {{asset}} stolen from hot wallets",
+      "oversupply": "Oversupply fears weigh on {{asset}}",
+      "rateHike": "Surprise {{percent}} rate hike hits {{asset}}",
+      "trialFailure": "{{asset}} drug fails a late-stage trial",
+      "ceoExit": "{{asset}} CEO resigns unexpectedly"
+    }
+  },
+  "stats": {
+    "equity": "Equity",
+    "balance": "Balance",
+    "usedMargin": "Used margin",
+    "freeMargin": "Free margin",
+    "unrealizedPnl": "Unrealized P&L",
+    "realizedPnl": "Realized P&L",
+    "marginLevel": "Margin level",
+    "totalFees": "Fees paid",
+    "winRate": "Win rate",
+    "bestTrade": "Best trade",
+    "worstTrade": "Worst trade",
+    "averagePnl": "Average P&L",
+    "averageWin": "Average win",
+    "averageLoss": "Average loss",
+    "maxDrawdown": "Max drawdown",
+    "totalTrades": "Trades",
+    "winsLosses": "Wins / losses",
+    "longestStreak": "Best win streak",
+    "level": "Trader level",
+    "xp": "{{xp}} XP",
+    "nextLevel": "{{xp}} XP to “{{level}}”",
+    "maxLevel": "Maximum level reached",
+    "levels": {
+      "novice": "Novice",
+      "amateur": "Amateur",
+      "pro": "Pro",
+      "legend": "Legend"
+    }
+  },
+  "achievements": {
+    "progress": "{{unlocked}} of {{total}} unlocked",
+    "unlockedAt": "Unlocked {{date}}",
+    "locked": "Locked",
+    "xpReward": "+{{xp}} XP",
+    "items": {
+      "firstTrade": {
+        "title": "First steps",
+        "description": "Close your first trade"
+      },
+      "firstProfit": {
+        "title": "In the green",
+        "description": "Close a trade with a profit"
+      },
+      "tenTrades": {
+        "title": "Getting serious",
+        "description_one": "Close {{count}} trade",
+        "description_other": "Close {{count}} trades"
+      },
+      "fiftyTrades": {
+        "title": "Market regular",
+        "description_one": "Close {{count}} trade",
+        "description_other": "Close {{count}} trades"
+      },
+      "bigWin": {
+        "title": "Big fish",
+        "description": "Make {{amount}} or more on a single trade"
+      },
+      "highRoller": {
+        "title": "High roller",
+        "description": "Open a position with x{{value}} leverage"
+      },
+      "bearHunter": {
+        "title": "Bear hunter",
+        "description": "Close a profitable short"
+      },
+      "diversified": {
+        "title": "Diversified",
+        "description_one": "Trade {{count}} different asset",
+        "description_other": "Trade {{count}} different assets"
+      },
+      "hotStreak": {
+        "title": "Hot streak",
+        "description_one": "Win {{count}} trade in a row",
+        "description_other": "Win {{count}} trades in a row"
+      },
+      "disciplined": {
+        "title": "Disciplined",
+        "description": "Lock in profit with a Take-Profit"
+      },
+      "riskManager": {
+        "title": "Risk manager",
+        "description": "Limit a loss with a Stop-Loss"
+      },
+      "phoenix": {
+        "title": "Phoenix",
+        "description": "Get liquidated and still recover to the starting capital"
+      },
+      "doubleUp": {
+        "title": "Double up",
+        "description": "Double your starting capital"
+      },
+      "multitasker": {
+        "title": "Multitasker",
+        "description_one": "Hold {{count}} position at once",
+        "description_other": "Hold {{count}} positions at once"
+      }
+    }
+  },
+  "leaderboard": {
+    "empty": "No records yet. Finish a session to get on the board.",
+    "rank": "#",
+    "date": "Date",
+    "finalEquity": "Final equity",
+    "return": "Return",
+    "trades": "Trades",
+    "winRate": "Win rate",
+    "bankrupt": "Bankrupt"
+  },
+  "onboarding": {
+    "dialogTitle": "How to play",
+    "stepOf": "Step {{current}} of {{total}}",
+    "start": "Start trading",
+    "steps": {
+      "welcome": {
+        "title": "Welcome to TradeSim!",
+        "body": "You get $10,000 of virtual capital and 8 fictional assets. Prices move randomly, news shakes the market. Your goal is to grow your capital without going bankrupt."
+      },
+      "chart": {
+        "title": "Read the market",
+        "body": "Pick an asset in the list on the left — its candlestick chart appears in the centre. Green candles mean the price rose, red ones mean it fell. Watch the news feed: it moves prices."
+      },
+      "order": {
+        "title": "Open a trade",
+        "body": "Choose Long if you expect growth or Short if you expect a fall. Set the margin, leverage and, ideally, Stop-Loss and Take-Profit. Hotkeys: B — buy, S — sell, Space — pause."
+      },
+      "risk": {
+        "title": "Manage risk",
+        "body": "Leverage multiplies both profit and loss. If a position loses almost all of its margin it is liquidated. Each trade costs a 0.1% fee. Use Stop-Loss — it is your best friend."
+      }
+    }
+  },
+  "settings": {
+    "theme": "Theme",
+    "themes": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "terminal": "Terminal"
+    },
+    "language": "Language",
+    "sound": "Sound effects",
+    "volume": "Volume",
+    "speed": "Game speed",
+    "replayTutorial": "Replay tutorial",
+    "newGame": "Start a new game",
+    "newGameTitle": "Start a new game?",
+    "newGameBody": "Open positions will be closed and your current result will be added to the leaderboard. Achievements and level are kept.",
+    "keyboard": "Keyboard shortcuts",
+    "keys": {
+      "space": "Space",
+      "buy": "Buy / Long",
+      "sell": "Sell / Short",
+      "pause": "Pause / resume"
+    },
+    "languages": {
+      "en": "English",
+      "ru": "Русский",
+      "es": "Español",
+      "zh": "中文",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
+  },
+  "gameOver": {
+    "title": "Bankrupt",
+    "body": "Your capital is gone. Every trader has been here — review your stats, learn the lesson and try again.",
+    "finalEquity": "Final equity"
+  },
+  "toasts": {
+    "positionOpened": "{{side}} {{asset}} opened",
+    "positionOpenedBody": "{{margin}} × x{{leverage}} at {{price}}",
+    "orderPlaced": "Limit order placed",
+    "orderBody": "{{side}} {{asset}} at {{price}}",
+    "orderFilled": "Limit order filled",
+    "orderCancelled": "Order cancelled",
+    "positionClosed": "{{asset}} position closed",
+    "pnlBody": "P&L: {{pnl}}",
+    "stopLoss": "Stop-Loss triggered: {{asset}}",
+    "takeProfit": "Take-Profit triggered: {{asset}}",
+    "liquidation": "Liquidation: {{asset}}",
+    "liquidationBody": "Margin lost: {{amount}}",
+    "achievement": "Achievement unlocked!",
+    "levelUp": "New level: {{level}}",
+    "news": "News · {{asset}}",
+    "bankrupt": "Game over: bankruptcy"
+  },
+  "errors": {
+    "unknownAsset": "Unknown asset or no price available",
+    "invalidAmount": "Enter a valid amount",
+    "amountTooSmall": "Minimum margin is {{min}}",
+    "invalidLeverage": "Unsupported leverage",
+    "insufficientFunds": "Insufficient free margin",
+    "invalidLimitPrice": "Enter a valid limit price",
+    "invalidStopLoss": "Stop-Loss must be below the price for Long and above it for Short",
+    "invalidTakeProfit": "Take-Profit must be above the price for Long and below it for Short",
+    "positionNotFound": "Position not found — it may already be closed",
+    "orderNotFound": "Order not found — it may already be filled",
+    "marketClosed": "Trading is unavailable: the game is over",
+    "duplicateAction": "Too fast — the action was ignored",
+    "corruptedSave": "Your saved game was damaged and has been reset",
+    "boundaryTitle": "Something went wrong",
+    "boundaryBody": "An unexpected error occurred. Reloading the page usually helps.",
+    "reload": "Reload"
+  },
+  "apiErrors": {
+    "VALIDATION_ERROR": "Please check the entered data",
+    "UNAUTHORIZED": "Please sign in",
+    "FORBIDDEN": "Access denied",
+    "NOT_FOUND": "Not found",
+    "CONFLICT": "The data was changed elsewhere, please try again",
+    "RATE_LIMITED": "Too many requests. Please wait a minute",
+    "CSRF_INVALID": "Security check failed. Reload the page",
+    "INTERNAL_ERROR": "Server error. Please try later",
+    "EMAIL_TAKEN": "This e-mail is already registered",
+    "NICKNAME_TAKEN": "This nickname is already taken",
+    "NICKNAME_INVALID": "The nickname may contain only Latin letters, digits and _",
+    "NICKNAME_FORBIDDEN": "This nickname is not allowed",
+    "INVALID_CREDENTIALS": "Wrong e-mail or password",
+    "TOKEN_INVALID": "The link or session is invalid",
+    "TOKEN_EXPIRED": "The link or session has expired",
+    "PROVIDER_DISABLED": "This sign-in method is disabled",
+    "RUN_NOT_FOUND": "Game not found",
+    "RUN_NOT_ACTIVE": "This game is already over",
+    "RUN_ALREADY_ACTIVE": "You already have a ranked game in progress",
+    "RUN_EXPIRED": "The ranked game has expired",
+    "ACTIONS_INVALID": "The game log was rejected by the server",
+    "ACTIONS_TOO_FAST": "The game ran faster than allowed",
+    "ACTIONS_LIMIT": "Too many actions in this game",
+    "DAILY_ALREADY_PLAYED": "You have already played today’s challenge",
+    "USER_NOT_FOUND": "Player not found",
+    "CANNOT_FRIEND_SELF": "You cannot add yourself",
+    "FRIEND_REQUEST_EXISTS": "Request already sent",
+    "ALREADY_FRIENDS": "You are already friends",
+    "VERSION_CONFLICT": "Settings were changed on another device",
+    "NETWORK": "No connection to the server",
+    "UNKNOWN": "Something went wrong"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Password",
+    "nickname": "Nickname",
+    "nicknameHint": "{{min}}–{{max}} characters: Latin letters, digits, _",
+    "passwordHint": "At least {{min}} characters",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "createAccount": "Create account",
+    "forgotLink": "Forgot password?",
+    "noAccount": "Create an account",
+    "haveAccount": "Already have an account? Sign in",
+    "forgotIntro": "Enter your e-mail and we will send a link to reset your password.",
+    "forgotSent": "If an account with this e-mail exists, we have sent a reset link.",
+    "sendLink": "Send link",
+    "backToSignIn": "Back to sign in",
+    "newPassword": "New password",
+    "confirmPassword": "Repeat password",
+    "setPassword": "Set password",
+    "resetDone": "Password changed. All other sessions were signed out.",
+    "verified": "E-mail confirmed. Thank you!",
+    "importGuest_one": "Link my local progress: {{xp}} XP and {{count}} achievement",
+    "importGuest_other": "Link my local progress: {{xp}} XP and {{count}} achievements",
+    "privacyNote": "We store only your e-mail, nickname and game results. You can export or delete your data at any time.",
+    "continueWith": {
+      "google": "Continue with Google",
+      "github": "Continue with GitHub"
+    },
+    "titles": {
+      "login": "Sign in",
+      "register": "Create account",
+      "forgot": "Reset password",
+      "reset": "New password",
+      "verify": "E-mail confirmation"
+    },
+    "validation": {
+      "email": "Enter a valid e-mail",
+      "required": "Required field",
+      "nickname": "{{min}}–{{max}} characters: Latin letters, digits and _",
+      "password": "At least {{min}} characters",
+      "mismatch": "Passwords do not match"
+    }
+  },
+  "account": {
+    "menu": "Account menu",
+    "title": "Account",
+    "verified": "confirmed",
+    "notVerified": "not confirmed",
+    "resend": "Resend confirmation",
+    "verificationSent": "Confirmation e-mail sent",
+    "hideFromLeaderboard": "Hide my profile from leaderboards",
+    "export": "Export my data",
+    "logoutAll": "Sign out everywhere",
+    "sessionsRevoked_one": "{{count}} session signed out",
+    "sessionsRevoked_other": "{{count}} sessions signed out",
+    "delete": "Delete account",
+    "deleteTitle": "Delete account?",
+    "deleteBody": "Your profile, games, achievements and records will be deleted permanently.",
+    "deleteConfirm": "Delete forever",
+    "deleted": "Account deleted",
+    "passwordConfirm": "Password",
+    "passwordConfirmHint": "Accounts created via Google/GitHub can leave this empty"
+  },
+  "community": {
+    "title": "Community",
+    "tabs": {
+      "leaderboard": "Leaderboards",
+      "daily": "Daily challenge",
+      "friends": "Friends",
+      "profile": "Profile"
+    }
+  },
+  "online": {
+    "player": "Player",
+    "level": "Level",
+    "types": {
+      "equity": "Final capital",
+      "roi": "ROI",
+      "bestTrade": "Best trade",
+      "streak": "Win streak",
+      "risk": "Risk score"
+    },
+    "typeHints": {
+      "equity": "Capital at the end of a verified game",
+      "roi": "Return on the starting capital",
+      "bestTrade": "Most profitable single trade",
+      "streak": "Longest series of profitable trades",
+      "risk": "Profit adjusted for drawdowns (Sharpe-like): steady growth beats lucky spikes"
+    },
+    "periods": {
+      "all": "Global",
+      "week": "Week",
+      "season": "Season",
+      "daily": "Daily",
+      "friends": "Friends"
+    },
+    "periodLabel": "Leaderboard period",
+    "metric": "Metric",
+    "season": "Season",
+    "friendsLocked": "Sign in to compete with friends",
+    "empty": "No results yet",
+    "emptyHint": "Play a ranked game to be the first on the board.",
+    "loadMore": "Show more",
+    "myPosition": "My position",
+    "notRanked": "You are not on this board yet."
+  },
+  "daily": {
+    "title": "Challenge of {{date}}",
+    "description": "Everyone plays the same market today. One counted attempt per day.",
+    "resetsIn": "New challenge in",
+    "participants": "Participants",
+    "yourResult": "Your result",
+    "yourRank": "Your place",
+    "signInToPlay": "Sign in to play",
+    "played": "You have played today. Come back tomorrow!",
+    "play": "Play the challenge",
+    "continue": "Continue",
+    "inProgressElsewhere": "Your attempt is in progress on another device."
+  },
+  "friends": {
+    "signInTitle": "Sign in to add friends",
+    "invalidNickname": "Enter a valid nickname",
+    "addLabel": "Add a friend by nickname",
+    "addPlaceholder": "nickname",
+    "send": "Send",
+    "nowFriends": "You are now friends!",
+    "requestSent": "Request sent",
+    "incoming_one": "{{count}} incoming request",
+    "incoming_other": "{{count}} incoming requests",
+    "accept": "Accept",
+    "decline": "Decline",
+    "title": "Friends",
+    "empty": "No friends yet",
+    "emptyHint": "Add players by nickname to compare results.",
+    "since": "friends since {{date}}",
+    "removeAria": "Remove {{nickname}} from friends",
+    "remove": "Remove",
+    "outgoing": "Sent requests",
+    "pending": "waiting"
+  },
+  "profile": {
+    "signInTitle": "Create an account to get a public profile",
+    "memberSince": "since {{date}}",
+    "friend": "friend",
+    "runs": "Ranked games",
+    "bestEquity": "Best capital",
+    "bestRoi": "Best ROI",
+    "noAchievements": "No achievements yet",
+    "bestRuns": "Best games",
+    "noRuns": "No verified games yet"
+  },
+  "ranked": {
+    "modes": {
+      "standard": "Ranked",
+      "daily": "Daily"
+    },
+    "queued": "Result queued",
+    "queuedHint": "No connection – the result will be sent automatically when you are back online.",
+    "practice": "Practice mode",
+    "play": "Play ranked",
+    "activeHint_one": "The server will verify the game by replay. {{count}} action waiting to sync.",
+    "activeHint_other": "The server will verify the game by replay. {{count}} actions waiting to sync.",
+    "finish": "Finish",
+    "started": {
+      "standard": "Ranked game started",
+      "daily": "Daily challenge started"
+    },
+    "lost": "The game can no longer be ranked – continuing as practice",
+    "flagged": "Result sent for review",
+    "accepted": "Result verified and ranked!",
+    "unranked": "Game verified (not ranked)",
+    "startFailed": "Could not start a ranked game"
+  }
+}

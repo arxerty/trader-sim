@@ -1,0 +1,95 @@
+# docker compose up -d --build            → postgres, mailpit, api, web (http://localhost:8080)
+# docker compose --profile redis up -d     → + Redis leaderboard cache
+# docker compose --profile test up -d postgres-test → isolated DB for API tests
+name: trader-sim
+
+x-api-env: &api-env
+  NODE_ENV: production
+  DATABASE_URL: postgresql://${POSTGRES_USER:-tradesim}:${POSTGRES_PASSWORD:-tradesim}@postgres:5432/${POSTGRES_DB:-tradesim}
+  JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+  DAILY_SEED_SECRET: ${DAILY_SEED_SECRET:?set DAILY_SEED_SECRET in .env}
+  ADMIN_TOKEN: ${ADMIN_TOKEN:-}
+  WEB_URL: ${WEB_URL_DOCKER:-http://localhost:8080}
+  API_PUBLIC_URL: ${API_PUBLIC_URL_DOCKER:-http://localhost:8080/api}
+  CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080}
+  COOKIE_PATH_PREFIX: /api
+  # Plain HTTP on localhost; set to true behind HTTPS.
+  COOKIE_SECURE: ${COOKIE_SECURE:-false}
+  SMTP_HOST: mailpit
+  SMTP_PORT: 1025
+  LEADERBOARD_CACHE: ${LEADERBOARD_CACHE:-none}
+  REDIS_URL: redis://redis:6379
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+  GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+  GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-tradesim}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tradesim}
+      POSTGRES_DB: ${POSTGRES_DB:-tradesim}
+    ports: ['5432:5432']
+    volumes: ['pgdata:/var/lib/postgresql/data']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-tradesim} -d ${POSTGRES_DB:-tradesim}']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  postgres-test:
+    image: postgres:16-alpine
+    profiles: [test]
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: tradesim_test
+    ports: ['5433:5432']
+    tmpfs: ['/var/lib/postgresql/data']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U test -d tradesim_test']
+      interval: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    profiles: [redis]
+    ports: ['6379:6379']
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports:
+      - '8025:8025' # web UI with all sent e-mails
+      - '1025:1025' # SMTP
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment: *api-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    ports: ['3000:3000']
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+    ports: ['8080:80']
+    restart: unless-stopped
+
+volumes:
+  pgdata:

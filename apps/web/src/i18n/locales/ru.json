@@ -1,0 +1,606 @@
+{
+  "common": {
+    "appName": "TradeSim",
+    "tagline": "Симулятор трейдера",
+    "disclaimer": "Игра учебная, данные вымышлены. Не является финансовой рекомендацией.",
+    "pause": "Пауза",
+    "resume": "Продолжить",
+    "paused": "Пауза",
+    "live": "Торги идут",
+    "speed": "Скорость",
+    "speedValue": "{{value}}×",
+    "close": "Закрыть",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "back": "Назад",
+    "next": "Далее",
+    "skip": "Пропустить",
+    "restart": "Начать заново",
+    "settings": "Настройки",
+    "notAvailable": "—",
+    "hotkeysHint": "Горячие клавиши: B — купить, S — продать, Пробел — пауза",
+    "dismiss": "Закрыть уведомление",
+    "notifications": "Уведомления",
+    "mainNavigation": "Основная навигация",
+    "chartLabel": "График цены {{asset}}",
+    "skipToContent": "Перейти к основному содержимому",
+    "loading": "Загрузка…",
+    "retry": "Повторить"
+  },
+  "nav": {
+    "trade": "Торговля",
+    "portfolio": "Портфель",
+    "news": "Новости",
+    "progress": "Прогресс"
+  },
+  "sections": {
+    "watchlist": "Рынки",
+    "orderPanel": "Новый ордер",
+    "positions": "Позиции",
+    "orders": "Ордера",
+    "history": "История",
+    "news": "Новости",
+    "stats": "Статистика",
+    "achievements": "Достижения",
+    "leaderboard": "Рекорды"
+  },
+  "assets": {
+    "NOVA": {
+      "name": "Нова Технолоджис"
+    },
+    "PTRX": {
+      "name": "Петрокс Энерджи"
+    },
+    "AURM": {
+      "name": "Аурум Голд Траст"
+    },
+    "BTCX": {
+      "name": "Биткоинекс"
+    },
+    "GX500": {
+      "name": "Индекс Глобал X 500"
+    },
+    "VOLT": {
+      "name": "Вольтара Моторс"
+    },
+    "MEDI": {
+      "name": "Медикор Фарма"
+    },
+    "AGRO": {
+      "name": "Агрофилд Пшеница"
+    }
+  },
+  "categories": {
+    "tech": "Технологии",
+    "energy": "Нефть и газ",
+    "metal": "Золото",
+    "crypto": "Криптовалюта",
+    "index": "Индекс",
+    "auto": "Автопром",
+    "pharma": "Фармацевтика",
+    "agri": "Агросектор"
+  },
+  "trade": {
+    "long": "Лонг",
+    "short": "Шорт",
+    "buyLong": "Купить / Лонг",
+    "sellShort": "Продать / Шорт",
+    "orderType": "Тип ордера",
+    "market": "Рыночный",
+    "limit": "Лимитный",
+    "limitPrice": "Лимитная цена",
+    "amountUsd": "Маржа, USD",
+    "shareOfFreeMargin": "Доля свободной маржи",
+    "leverage": "Плечо",
+    "leverageValue": "x{{value}}",
+    "stopLoss": "Стоп-лосс",
+    "takeProfit": "Тейк-профит",
+    "optional": "необязательно",
+    "price": "Цена",
+    "change": "Изменение",
+    "notional": "Размер позиции",
+    "quantity": "Количество",
+    "fee": "Комиссия ({{rate}})",
+    "liquidationPrice": "Цена ликвидации",
+    "freeMargin": "Свободная маржа",
+    "asset": "Актив",
+    "side": "Направление",
+    "entry": "Вход",
+    "mark": "Текущая",
+    "exit": "Выход",
+    "size": "Объём",
+    "pnl": "P&L",
+    "reason": "Причина",
+    "time": "Время",
+    "actions": "Действия",
+    "closePosition": "Закрыть",
+    "closePositionAria": "Закрыть позицию {{side}} по {{asset}}",
+    "cancelOrder": "Отменить",
+    "cancelOrderAria": "Отменить лимитный ордер по {{asset}}",
+    "noPositions": "Нет открытых позиций",
+    "noOrders": "Нет активных ордеров",
+    "noHistory": "Закрытых сделок пока нет",
+    "positionsCount_one": "{{count}} открытая позиция",
+    "positionsCount_few": "{{count}} открытые позиции",
+    "positionsCount_many": "{{count}} открытых позиций",
+    "positionsCount_other": "{{count}} открытой позиции",
+    "tradesCount_one": "{{count}} сделка",
+    "tradesCount_few": "{{count}} сделки",
+    "tradesCount_many": "{{count}} сделок",
+    "tradesCount_other": "{{count}} сделки",
+    "selectAsset": "Выберите актив",
+    "reasons": {
+      "manual": "Вручную",
+      "stopLoss": "Стоп-лосс",
+      "takeProfit": "Тейк-профит",
+      "liquidation": "Ликвидация"
+    }
+  },
+  "news": {
+    "empty": "Новостей пока нет. Следите за лентой…",
+    "positive": "Позитив",
+    "negative": "Негатив",
+    "impact": "Влияние: {{level}}",
+    "impactLevels": {
+      "low": "слабое",
+      "medium": "среднее",
+      "high": "сильное"
+    },
+    "templates": {
+      "earningsBeat_one": "{{asset}} превзошла прогноз прибыли {{count}} квартал подряд",
+      "earningsBeat_few": "{{asset}} превзошла прогноз прибыли {{count}} квартала подряд",
+      "earningsBeat_many": "{{asset}} превзошла прогноз прибыли {{count}} кварталов подряд",
+      "earningsBeat_other": "{{asset}} превзошла прогноз прибыли {{count}} квартала подряд",
+      "analystUpgrade_one": "{{count}} аналитик повысил рейтинг {{asset}} до «Покупать»",
+      "analystUpgrade_few": "{{count}} аналитика повысили рейтинг {{asset}} до «Покупать»",
+      "analystUpgrade_many": "{{count}} аналитиков повысили рейтинг {{asset}} до «Покупать»",
+      "analystUpgrade_other": "{{count}} аналитика повысили рейтинг {{asset}} до «Покупать»",
+      "productLaunch": "{{asset}} представила прорывной продукт",
+      "drugApproval": "Регулятор одобрил новый препарат {{asset}}",
+      "supplyDisruption": "Перебои с поставками толкают {{asset}} вверх",
+      "safeHaven": "Инвесторы ищут защиту: спрос на {{asset}} резко вырос",
+      "adoption": "Крупная платёжная сеть добавила поддержку {{asset}}",
+      "rateCut": "Центробанк снизил ставку на {{percent}} — {{asset}} растёт",
+      "earningsMiss": "{{asset}} не дотянула до прогноза прибыли на {{percent}}",
+      "lawsuit": "Против {{asset}} подан крупный коллективный иск",
+      "recall_one": "{{asset}} отзывает {{count, number}} автомобиль",
+      "recall_few": "{{asset}} отзывает {{count, number}} автомобиля",
+      "recall_many": "{{asset}} отзывает {{count, number}} автомобилей",
+      "recall_other": "{{asset}} отзывает {{count, number}} автомобиля",
+      "exchangeHack": "Взлом биржи: {{asset}} похищены из горячих кошельков",
+      "oversupply": "Опасения перепроизводства давят на {{asset}}",
+      "rateHike": "Неожиданное повышение ставки на {{percent}} бьёт по {{asset}}",
+      "trialFailure": "Препарат {{asset}} провалил финальную фазу испытаний",
+      "ceoExit": "CEO {{asset}} неожиданно ушёл в отставку"
+    }
+  },
+  "stats": {
+    "equity": "Капитал",
+    "balance": "Баланс",
+    "usedMargin": "Занятая маржа",
+    "freeMargin": "Свободная маржа",
+    "unrealizedPnl": "Нереализованный P&L",
+    "realizedPnl": "Реализованный P&L",
+    "marginLevel": "Уровень маржи",
+    "totalFees": "Уплачено комиссий",
+    "winRate": "Винрейт",
+    "bestTrade": "Лучшая сделка",
+    "worstTrade": "Худшая сделка",
+    "averagePnl": "Средний P&L",
+    "averageWin": "Средняя прибыль",
+    "averageLoss": "Средний убыток",
+    "maxDrawdown": "Макс. просадка",
+    "totalTrades": "Сделок",
+    "winsLosses": "Прибыльные / убыточные",
+    "longestStreak": "Лучшая серия побед",
+    "level": "Уровень трейдера",
+    "xp": "{{xp}} XP",
+    "nextLevel": "{{xp}} XP до уровня «{{level}}»",
+    "maxLevel": "Достигнут максимальный уровень",
+    "levels": {
+      "novice": "Новичок",
+      "amateur": "Любитель",
+      "pro": "Профи",
+      "legend": "Легенда"
+    }
+  },
+  "achievements": {
+    "progress": "Открыто {{unlocked}} из {{total}}",
+    "unlockedAt": "Получено {{date}}",
+    "locked": "Не получено",
+    "xpReward": "+{{xp}} XP",
+    "items": {
+      "firstTrade": {
+        "title": "Первые шаги",
+        "description": "Закройте первую сделку"
+      },
+      "firstProfit": {
+        "title": "В плюсе",
+        "description": "Закройте сделку с прибылью"
+      },
+      "tenTrades": {
+        "title": "Всё серьёзно",
+        "description_one": "Закройте {{count}} сделку",
+        "description_few": "Закройте {{count}} сделки",
+        "description_many": "Закройте {{count}} сделок",
+        "description_other": "Закройте {{count}} сделки"
+      },
+      "fiftyTrades": {
+        "title": "Завсегдатай рынка",
+        "description_one": "Закройте {{count}} сделку",
+        "description_few": "Закройте {{count}} сделки",
+        "description_many": "Закройте {{count}} сделок",
+        "description_other": "Закройте {{count}} сделки"
+      },
+      "bigWin": {
+        "title": "Крупная рыба",
+        "description": "Заработайте {{amount}} или больше на одной сделке"
+      },
+      "highRoller": {
+        "title": "Хайроллер",
+        "description": "Откройте позицию с плечом x{{value}}"
+      },
+      "bearHunter": {
+        "title": "Охотник на медведей",
+        "description": "Закройте прибыльный шорт"
+      },
+      "diversified": {
+        "title": "Диверсификация",
+        "description_one": "Поторгуйте {{count}} разным активом",
+        "description_few": "Поторгуйте {{count}} разными активами",
+        "description_many": "Поторгуйте {{count}} разными активами",
+        "description_other": "Поторгуйте {{count}} разными активами"
+      },
+      "hotStreak": {
+        "title": "Горячая серия",
+        "description_one": "Выиграйте {{count}} сделку подряд",
+        "description_few": "Выиграйте {{count}} сделки подряд",
+        "description_many": "Выиграйте {{count}} сделок подряд",
+        "description_other": "Выиграйте {{count}} сделки подряд"
+      },
+      "disciplined": {
+        "title": "Дисциплина",
+        "description": "Зафиксируйте прибыль тейк-профитом"
+      },
+      "riskManager": {
+        "title": "Риск-менеджер",
+        "description": "Ограничьте убыток стоп-лоссом"
+      },
+      "phoenix": {
+        "title": "Феникс",
+        "description": "Переживите ликвидацию и восстановите стартовый капитал"
+      },
+      "doubleUp": {
+        "title": "Удвоение",
+        "description": "Удвойте стартовый капитал"
+      },
+      "multitasker": {
+        "title": "Многозадачность",
+        "description_one": "Держите {{count}} позицию одновременно",
+        "description_few": "Держите {{count}} позиции одновременно",
+        "description_many": "Держите {{count}} позиций одновременно",
+        "description_other": "Держите {{count}} позиции одновременно"
+      }
+    }
+  },
+  "leaderboard": {
+    "empty": "Рекордов пока нет. Завершите сессию, чтобы попасть в таблицу.",
+    "rank": "№",
+    "date": "Дата",
+    "finalEquity": "Итоговый капитал",
+    "return": "Доходность",
+    "trades": "Сделки",
+    "winRate": "Винрейт",
+    "bankrupt": "Банкрот"
+  },
+  "onboarding": {
+    "dialogTitle": "Как играть",
+    "stepOf": "Шаг {{current}} из {{total}}",
+    "start": "Начать торговлю",
+    "steps": {
+      "welcome": {
+        "title": "Добро пожаловать в TradeSim!",
+        "body": "У вас $10 000 виртуального капитала и 8 вымышленных активов. Цены движутся случайно, новости встряхивают рынок. Цель — приумножить капитал и не обанкротиться."
+      },
+      "chart": {
+        "title": "Читайте рынок",
+        "body": "Выберите актив в списке слева — его свечной график появится в центре. Зелёные свечи — цена выросла, красные — упала. Следите за лентой новостей: она двигает цены."
+      },
+      "order": {
+        "title": "Откройте сделку",
+        "body": "Выберите Лонг, если ждёте роста, или Шорт, если ждёте падения. Укажите маржу, плечо и, желательно, стоп-лосс и тейк-профит. Горячие клавиши: B — купить, S — продать, Пробел — пауза."
+      },
+      "risk": {
+        "title": "Управляйте риском",
+        "body": "Плечо умножает и прибыль, и убыток. Если позиция теряет почти всю маржу — её ликвидируют. Каждая сделка стоит 0,1% комиссии. Стоп-лосс — ваш лучший друг."
+      }
+    }
+  },
+  "settings": {
+    "theme": "Тема",
+    "themes": {
+      "system": "Системная",
+      "light": "Светлая",
+      "dark": "Тёмная",
+      "terminal": "Терминал"
+    },
+    "language": "Язык",
+    "sound": "Звуковые эффекты",
+    "volume": "Громкость",
+    "speed": "Скорость игры",
+    "replayTutorial": "Пройти обучение заново",
+    "newGame": "Начать новую игру",
+    "newGameTitle": "Начать новую игру?",
+    "newGameBody": "Открытые позиции будут закрыты, а текущий результат попадёт в таблицу рекордов. Достижения и уровень сохранятся.",
+    "keyboard": "Горячие клавиши",
+    "keys": {
+      "space": "Пробел",
+      "buy": "Купить / Лонг",
+      "sell": "Продать / Шорт",
+      "pause": "Пауза / продолжить"
+    },
+    "languages": {
+      "en": "English",
+      "ru": "Русский",
+      "es": "Español",
+      "zh": "中文",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
+  },
+  "gameOver": {
+    "title": "Банкротство",
+    "body": "Капитал закончился. Через это проходил каждый трейдер — изучите статистику, сделайте выводы и попробуйте снова.",
+    "finalEquity": "Итоговый капитал"
+  },
+  "toasts": {
+    "positionOpened": "{{side}} {{asset}} открыт",
+    "positionOpenedBody": "{{margin}} × x{{leverage}} по {{price}}",
+    "orderPlaced": "Лимитный ордер выставлен",
+    "orderBody": "{{side}} {{asset}} по {{price}}",
+    "orderFilled": "Лимитный ордер исполнен",
+    "orderCancelled": "Ордер отменён",
+    "positionClosed": "Позиция {{asset}} закрыта",
+    "pnlBody": "P&L: {{pnl}}",
+    "stopLoss": "Сработал стоп-лосс: {{asset}}",
+    "takeProfit": "Сработал тейк-профит: {{asset}}",
+    "liquidation": "Ликвидация: {{asset}}",
+    "liquidationBody": "Потеряна маржа: {{amount}}",
+    "achievement": "Новое достижение!",
+    "levelUp": "Новый уровень: {{level}}",
+    "news": "Новость · {{asset}}",
+    "bankrupt": "Игра окончена: банкротство"
+  },
+  "errors": {
+    "unknownAsset": "Неизвестный актив или нет цены",
+    "invalidAmount": "Введите корректную сумму",
+    "amountTooSmall": "Минимальная маржа — {{min}}",
+    "invalidLeverage": "Недопустимое плечо",
+    "insufficientFunds": "Недостаточно свободной маржи",
+    "invalidLimitPrice": "Введите корректную лимитную цену",
+    "invalidStopLoss": "Стоп-лосс должен быть ниже цены для лонга и выше — для шорта",
+    "invalidTakeProfit": "Тейк-профит должен быть выше цены для лонга и ниже — для шорта",
+    "positionNotFound": "Позиция не найдена — возможно, она уже закрыта",
+    "orderNotFound": "Ордер не найден — возможно, он уже исполнен",
+    "marketClosed": "Торговля недоступна: игра окончена",
+    "duplicateAction": "Слишком быстро — действие проигнорировано",
+    "corruptedSave": "Сохранение было повреждено и сброшено",
+    "boundaryTitle": "Что-то пошло не так",
+    "boundaryBody": "Произошла непредвиденная ошибка. Обычно помогает перезагрузка страницы.",
+    "reload": "Перезагрузить"
+  },
+  "apiErrors": {
+    "VALIDATION_ERROR": "Проверьте введённые данные",
+    "UNAUTHORIZED": "Войдите в аккаунт",
+    "FORBIDDEN": "Доступ запрещён",
+    "NOT_FOUND": "Не найдено",
+    "CONFLICT": "Данные изменились, попробуйте ещё раз",
+    "RATE_LIMITED": "Слишком много запросов. Подождите минуту",
+    "CSRF_INVALID": "Проверка безопасности не пройдена. Обновите страницу",
+    "INTERNAL_ERROR": "Ошибка сервера. Попробуйте позже",
+    "EMAIL_TAKEN": "Этот e-mail уже зарегистрирован",
+    "NICKNAME_TAKEN": "Этот никнейм уже занят",
+    "NICKNAME_INVALID": "Никнейм может содержать только латиницу, цифры и _",
+    "NICKNAME_FORBIDDEN": "Такой никнейм использовать нельзя",
+    "INVALID_CREDENTIALS": "Неверный e-mail или пароль",
+    "TOKEN_INVALID": "Ссылка или сессия недействительна",
+    "TOKEN_EXPIRED": "Срок действия ссылки или сессии истёк",
+    "PROVIDER_DISABLED": "Этот способ входа отключён",
+    "RUN_NOT_FOUND": "Партия не найдена",
+    "RUN_NOT_ACTIVE": "Эта партия уже завершена",
+    "RUN_ALREADY_ACTIVE": "У вас уже идёт рейтинговая партия",
+    "RUN_EXPIRED": "Время рейтинговой партии истекло",
+    "ACTIONS_INVALID": "Сервер отклонил журнал действий партии",
+    "ACTIONS_TOO_FAST": "Игра шла быстрее допустимого",
+    "ACTIONS_LIMIT": "Слишком много действий в партии",
+    "DAILY_ALREADY_PLAYED": "Сегодняшний челлендж уже сыгран",
+    "USER_NOT_FOUND": "Игрок не найден",
+    "CANNOT_FRIEND_SELF": "Нельзя добавить себя",
+    "FRIEND_REQUEST_EXISTS": "Заявка уже отправлена",
+    "ALREADY_FRIENDS": "Вы уже друзья",
+    "VERSION_CONFLICT": "Настройки изменены на другом устройстве",
+    "NETWORK": "Нет связи с сервером",
+    "UNKNOWN": "Что-то пошло не так"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Пароль",
+    "nickname": "Никнейм",
+    "nicknameHint": "{{min}}–{{max}} символов: латиница, цифры, _",
+    "passwordHint": "Не короче {{min}} символов",
+    "signIn": "Войти",
+    "signOut": "Выйти",
+    "createAccount": "Создать аккаунт",
+    "forgotLink": "Забыли пароль?",
+    "noAccount": "Создать аккаунт",
+    "haveAccount": "Уже есть аккаунт? Войти",
+    "forgotIntro": "Укажите e-mail — мы пришлём ссылку для сброса пароля.",
+    "forgotSent": "Если аккаунт с таким e-mail существует, мы отправили ссылку для сброса.",
+    "sendLink": "Отправить ссылку",
+    "backToSignIn": "Вернуться ко входу",
+    "newPassword": "Новый пароль",
+    "confirmPassword": "Повторите пароль",
+    "setPassword": "Сохранить пароль",
+    "resetDone": "Пароль изменён. Все остальные сессии завершены.",
+    "verified": "E-mail подтверждён. Спасибо!",
+    "importGuest_one": "Привязать локальный прогресс: {{xp}} XP и {{count}} достижение",
+    "importGuest_few": "Привязать локальный прогресс: {{xp}} XP и {{count}} достижения",
+    "importGuest_many": "Привязать локальный прогресс: {{xp}} XP и {{count}} достижений",
+    "importGuest_other": "Привязать локальный прогресс: {{xp}} XP и {{count}} достижения",
+    "privacyNote": "Мы храним только e-mail, никнейм и результаты игр. Данные можно выгрузить или удалить в любой момент.",
+    "continueWith": {
+      "google": "Войти через Google",
+      "github": "Войти через GitHub"
+    },
+    "titles": {
+      "login": "Вход",
+      "register": "Регистрация",
+      "forgot": "Сброс пароля",
+      "reset": "Новый пароль",
+      "verify": "Подтверждение e-mail"
+    },
+    "validation": {
+      "email": "Введите корректный e-mail",
+      "required": "Обязательное поле",
+      "nickname": "{{min}}–{{max}} символов: латиница, цифры и _",
+      "password": "Не короче {{min}} символов",
+      "mismatch": "Пароли не совпадают"
+    }
+  },
+  "account": {
+    "menu": "Меню аккаунта",
+    "title": "Аккаунт",
+    "verified": "подтверждён",
+    "notVerified": "не подтверждён",
+    "resend": "Отправить письмо ещё раз",
+    "verificationSent": "Письмо для подтверждения отправлено",
+    "hideFromLeaderboard": "Скрыть мой профиль из рейтингов",
+    "export": "Выгрузить мои данные",
+    "logoutAll": "Выйти на всех устройствах",
+    "sessionsRevoked_one": "Завершена {{count}} сессия",
+    "sessionsRevoked_few": "Завершены {{count}} сессии",
+    "sessionsRevoked_many": "Завершено {{count}} сессий",
+    "sessionsRevoked_other": "Завершено {{count}} сессии",
+    "delete": "Удалить аккаунт",
+    "deleteTitle": "Удалить аккаунт?",
+    "deleteBody": "Профиль, партии, достижения и рекорды будут удалены безвозвратно.",
+    "deleteConfirm": "Удалить навсегда",
+    "deleted": "Аккаунт удалён",
+    "passwordConfirm": "Пароль",
+    "passwordConfirmHint": "Для аккаунтов через Google/GitHub поле можно оставить пустым"
+  },
+  "community": {
+    "title": "Сообщество",
+    "tabs": {
+      "leaderboard": "Рейтинги",
+      "daily": "Ежедневный челлендж",
+      "friends": "Друзья",
+      "profile": "Профиль"
+    }
+  },
+  "online": {
+    "player": "Игрок",
+    "level": "Уровень",
+    "types": {
+      "equity": "Итоговый капитал",
+      "roi": "ROI",
+      "bestTrade": "Лучшая сделка",
+      "streak": "Серия побед",
+      "risk": "Риск-скор"
+    },
+    "typeHints": {
+      "equity": "Капитал в конце проверенной партии",
+      "roi": "Доходность к стартовому капиталу",
+      "bestTrade": "Самая прибыльная сделка",
+      "streak": "Самая длинная серия прибыльных сделок",
+      "risk": "Прибыль с поправкой на просадку (как Sharpe): ровный рост важнее случайного скачка"
+    },
+    "periods": {
+      "all": "Глобальный",
+      "week": "Неделя",
+      "season": "Сезон",
+      "daily": "День",
+      "friends": "Друзья"
+    },
+    "periodLabel": "Период рейтинга",
+    "metric": "Метрика",
+    "season": "Сезон",
+    "friendsLocked": "Войдите, чтобы соревноваться с друзьями",
+    "empty": "Результатов пока нет",
+    "emptyHint": "Сыграйте рейтинговую партию и станьте первым.",
+    "loadMore": "Показать ещё",
+    "myPosition": "Моя позиция",
+    "notRanked": "Вас пока нет в этом рейтинге."
+  },
+  "daily": {
+    "title": "Челлендж {{date}}",
+    "description": "Сегодня у всех один и тот же рынок. Одна зачётная попытка в сутки.",
+    "resetsIn": "Новый челлендж через",
+    "participants": "Участников",
+    "yourResult": "Ваш результат",
+    "yourRank": "Ваше место",
+    "signInToPlay": "Войдите, чтобы играть",
+    "played": "Сегодня вы уже сыграли. Возвращайтесь завтра!",
+    "play": "Играть челлендж",
+    "continue": "Продолжить",
+    "inProgressElsewhere": "Ваша попытка идёт на другом устройстве."
+  },
+  "friends": {
+    "signInTitle": "Войдите, чтобы добавлять друзей",
+    "invalidNickname": "Введите корректный никнейм",
+    "addLabel": "Добавить друга по никнейму",
+    "addPlaceholder": "никнейм",
+    "send": "Отправить",
+    "nowFriends": "Теперь вы друзья!",
+    "requestSent": "Заявка отправлена",
+    "incoming_one": "{{count}} входящая заявка",
+    "incoming_few": "{{count}} входящие заявки",
+    "incoming_many": "{{count}} входящих заявок",
+    "incoming_other": "{{count}} входящей заявки",
+    "accept": "Принять",
+    "decline": "Отклонить",
+    "title": "Друзья",
+    "empty": "Друзей пока нет",
+    "emptyHint": "Добавляйте игроков по никнейму, чтобы сравнивать результаты.",
+    "since": "друзья с {{date}}",
+    "removeAria": "Удалить {{nickname}} из друзей",
+    "remove": "Удалить",
+    "outgoing": "Отправленные заявки",
+    "pending": "ожидает"
+  },
+  "profile": {
+    "signInTitle": "Создайте аккаунт, чтобы получить публичный профиль",
+    "memberSince": "с {{date}}",
+    "friend": "друг",
+    "runs": "Рейтинговых партий",
+    "bestEquity": "Лучший капитал",
+    "bestRoi": "Лучший ROI",
+    "noAchievements": "Достижений пока нет",
+    "bestRuns": "Лучшие партии",
+    "noRuns": "Проверенных партий пока нет"
+  },
+  "ranked": {
+    "modes": {
+      "standard": "Рейтинг",
+      "daily": "Челлендж"
+    },
+    "queued": "Результат в очереди",
+    "queuedHint": "Нет связи — результат отправится автоматически, когда сеть появится.",
+    "practice": "Тренировка",
+    "play": "Играть в рейтинг",
+    "activeHint_one": "Сервер проверит партию повтором. Ожидает синхронизации {{count}} действие.",
+    "activeHint_few": "Сервер проверит партию повтором. Ожидают синхронизации {{count}} действия.",
+    "activeHint_many": "Сервер проверит партию повтором. Ожидают синхронизации {{count}} действий.",
+    "activeHint_other": "Сервер проверит партию повтором. Ожидают синхронизации {{count}} действия.",
+    "finish": "Завершить",
+    "started": {
+      "standard": "Рейтинговая партия началась",
+      "daily": "Ежедневный челлендж начался"
+    },
+    "lost": "Партия больше не может попасть в рейтинг — продолжаем как тренировку",
+    "flagged": "Результат отправлен на проверку",
+    "accepted": "Результат проверен и попал в рейтинг!",
+    "unranked": "Партия проверена (вне рейтинга)",
+    "startFailed": "Не удалось начать рейтинговую партию"
+  }
+}

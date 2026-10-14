@@ -1,0 +1,273 @@
+// Prisma schema for the TradeSim API.
+// Migrations: `npm run db:migrate` (deploy) / `npm run db:migrate:dev -w @trader-sim/api` (author).
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RunStatus {
+  ACTIVE
+  FINISHED
+  FLAGGED
+  ABANDONED
+  EXPIRED
+}
+
+enum RunMode {
+  STANDARD
+  DAILY
+}
+
+enum FriendshipStatus {
+  PENDING
+  ACCEPTED
+}
+
+enum EmailTokenType {
+  VERIFY_EMAIL
+  RESET_PASSWORD
+}
+
+enum LeaderboardMetric {
+  EQUITY
+  ROI
+  BEST_TRADE
+  STREAK
+  RISK
+}
+
+enum PeriodType {
+  ALL
+  WEEK
+  SEASON
+  DAILY
+}
+
+model User {
+  id                  String    @id @default(cuid())
+  email               String    @unique
+  emailVerified       Boolean   @default(false)
+  /// null for OAuth-only accounts
+  passwordHash        String?
+  nickname            String    @unique
+  /// Case-insensitive uniqueness of nicknames
+  nicknameLower       String    @unique
+  avatar              String?
+  locale              String    @default("en")
+  theme               String    @default("system")
+  hideFromLeaderboard Boolean   @default(false)
+  /// Cloud-synced client settings (JSON) with optimistic concurrency version
+  settings            Json?
+  settingsVersion     Int       @default(0)
+  settingsUpdatedAt   DateTime  @default(now())
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  refreshTokens    RefreshToken[]
+  emailTokens      EmailToken[]
+  oauthAccounts    OAuthAccount[]
+  profile          Profile?
+  runs             Run[]
+  achievements     UserAchievement[]
+  leaderboard      LeaderboardEntry[]
+  sentRequests     Friendship[]       @relation("requester")
+  receivedRequests Friendship[]       @relation("addressee")
+}
+
+/// Refresh tokens are stored hashed; a `family` groups rotations of one login so
+/// that re-use of an already rotated token revokes the whole chain.
+model RefreshToken {
+  id         String    @id @default(cuid())
+  userId     String
+  tokenHash  String    @unique
+  family     String
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  replacedBy String?
+  userAgent  String?
+  ip         String?
+  createdAt  DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([family])
+}
+
+model EmailToken {
+  id        String         @id @default(cuid())
+  userId    String
+  type      EmailTokenType
+  tokenHash String         @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime       @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+}
+
+model OAuthAccount {
+  id             String   @id @default(cuid())
+  provider       String
+  providerUserId String
+  userId         String
+  createdAt      DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerUserId])
+}
+
+/// Aggregated, server-verified player statistics.
+model Profile {
+  userId      String   @id
+  xp          Int      @default(0)
+  level       String   @default("novice")
+  totalRuns   Int      @default(0)
+  totalTrades Int      @default(0)
+  wins        Int      @default(0)
+  bestEquity  Float?
+  bestRoi     Float?
+  /// XP imported from guest play (unverified, never used for ranking)
+  importedXp  Int      @default(0)
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+/// One game session. Its result is computed by replaying the action log.
+model Run {
+  id               String    @id @default(cuid())
+  userId           String
+  mode             RunMode   @default(STANDARD)
+  status           RunStatus @default(ACTIVE)
+  seed             Int
+  /// Wall-clock anchor of virtual market time (ms since epoch)
+  startTime        BigInt
+  startingBalance  Float
+  maxTicks         Int
+  engineVersion    String
+  clientEngine     String?
+  dailyDate        String?
+  lastTick         Int
+  actionCount      Int       @default(0)
+  startedAt        DateTime  @default(now())
+  expiresAt        DateTime
+  finishedAt       DateTime?
+  ranked           Boolean   @default(false)
+  flags            String[]  @default([])
+  // server-computed result
+  finalEquity      Float?
+  roi              Float?
+  bestTrade        Float?
+  longestStreak    Int?
+  maxDrawdown      Float?
+  riskScore        Float?
+  totalTrades      Int?
+  winRate          Float?
+  ticks            Int?
+  bankrupt         Boolean?
+  achievements     String[]  @default([])
+  /// Client-reported equity, kept only for discrepancy analysis
+  clientEquity     Float?
+  xpGained         Int       @default(0)
+
+  user    User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  actions RunAction[]
+  entries LeaderboardEntry[]
+
+  @@index([userId, status])
+  @@index([status, expiresAt])
+  @@index([userId, mode, dailyDate])
+  @@index([status, finishedAt])
+}
+
+/// Append-only action log of a run (`seq` keeps the original order).
+model RunAction {
+  id      BigInt @id @default(autoincrement())
+  runId   String
+  seq     Int
+  tick    Int
+  type    String
+  payload Json?
+
+  run Run @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@unique([runId, seq])
+}
+
+/// Static catalogue mirrored from the engine (seeded).
+model Achievement {
+  id    String @id
+  xp    Int
+  icon  String
+  users UserAchievement[]
+}
+
+model UserAchievement {
+  userId        String
+  achievementId String
+  unlockedAt    DateTime @default(now())
+  runId         String?
+  /// true when imported from guest play (unverified)
+  imported      Boolean  @default(false)
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@id([userId, achievementId])
+}
+
+/// Monthly seasons; past ones form the archive.
+model Season {
+  key      String   @id
+  startsAt DateTime
+  endsAt   DateTime
+}
+
+/// Best value per user / metric / period. Only verified, ranked runs end up here.
+model LeaderboardEntry {
+  id         String            @id @default(cuid())
+  userId     String
+  metric     LeaderboardMetric
+  periodType PeriodType
+  periodKey  String
+  value      Float
+  runId      String
+  achievedAt DateTime          @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  run  Run  @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, metric, periodType, periodKey])
+  @@index([metric, periodType, periodKey, value(sort: Desc), achievedAt, id])
+}
+
+model DailyChallenge {
+  date      String   @id
+  seed      Int
+  createdAt DateTime @default(now())
+}
+
+model Friendship {
+  id          String           @id @default(cuid())
+  requesterId String
+  addresseeId String
+  status      FriendshipStatus @default(PENDING)
+  createdAt   DateTime         @default(now())
+  respondedAt DateTime?
+
+  requester User @relation("requester", fields: [requesterId], references: [id], onDelete: Cascade)
+  addressee User @relation("addressee", fields: [addresseeId], references: [id], onDelete: Cascade)
+
+  @@unique([requesterId, addresseeId])
+  @@index([addresseeId, status])
+}

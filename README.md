@@ -1,133 +1,254 @@
-﻿# TradeSim — симулятор трейдера
+# TradeSim — симулятор трейдера
 
-Учебная браузерная игра: виртуальные $10 000, 8 вымышленных активов, свечные графики,
-новости, плечо, ликвидации, достижения и таблица рекордов.
+Учебная игра: $10 000 виртуального капитала, 8 вымышленных активов, свечные графики, новости,
+плечо и ликвидации. Версия 2 добавляет аккаунты, облачные сохранения и **честные рейтинги**:
+результат каждой рейтинговой партии сервер пересчитывает сам, повторяя её на том же движке.
 
 > ⚠ Игра учебная, все данные вымышлены. Не является финансовой рекомендацией.
 
+## Монорепозиторий
+
+```
+trader-sim/
+├─ apps/
+│  ├─ web/        фронтенд: Vite + React 18 + TanStack Query + zustand + i18next
+│  └─ api/        бэкенд: Fastify + Prisma/PostgreSQL + zod + argon2id + JWT
+├─ packages/
+│  ├─ engine/     чистый детерминированный движок (рынок, новости, торговля, достижения, реплей)
+│  └─ shared/     контракт API: zod-схемы, DTO-типы, коды ошибок, константы
+├─ docker-compose.yml        postgres · redis (профиль) · mailpit · api · web (nginx)
+├─ .github/workflows/ci.yml  lint · format · i18n · typecheck · test · build · docker
+└─ tsconfig.base.json, package.json (npm workspaces)
+```
+
+`packages/engine` не обращается к `window`, `localStorage`, DOM, `Date.now()` и `Math.random()`:
+время и случайность приходят только параметрами (seed, номер тика, время старта). ESLint
+запрещает эти глобалы в движке, а его тесты идут в чистом Node.
+
 ## Быстрый старт
+
+### Всё в Docker
+
+```bash
+cp .env.example .env        # задайте JWT_SECRET и DAILY_SEED_SECRET
+docker compose up -d --build   # миграции применяются автоматически при старте api
+```
+
+- игра: http://localhost:8080 (nginx проксирует `/api` → api)
+- Swagger UI: http://localhost:3000/docs
+- письма (подтверждение, сброс пароля): Mailpit http://localhost:8025
+- кэш рейтингов в Redis: `LEADERBOARD_CACHE=redis docker compose --profile redis up -d`
+
+Демо-данные (12 игроков с партиями, которые прошли тот же реплей, что и настоящие):
+
+```bash
+npm ci && npm run db:generate -w @trader-sim/api
+DATABASE_URL=postgresql://tradesim:tradesim@localhost:5432/tradesim npm run db:seed
+```
+
+Логин любого демо-игрока: `<nickname>@demo.tradesim.local` / `demo-password-123`.
+
+### Локальная разработка
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
+cp .env.example .env
+docker compose up -d postgres mailpit     # или без Docker: npm run db:embedded -w @trader-sim/api
+npm run db:migrate
+npm run db:seed
+npm run dev                               # api :3000 + web :5173 (Vite проксирует /api)
 ```
 
-| Скрипт               | Что делает                                                     |
-| -------------------- | -------------------------------------------------------------- |
-| `npm run dev`        | dev-сервер Vite с HMR                                          |
-| `npm run build`      | проверка типов (`tsc -b`) + production-сборка в `dist/`        |
-| `npm run preview`    | локальный просмотр собранной версии                            |
-| `npm test`           | юнит- и компонентные тесты (Vitest + Testing Library)          |
-| `npm run lint`       | ESLint (TS strict, react-hooks, jsx-a11y), 0 предупреждений    |
-| `npm run format`     | Prettier                                                       |
-| `npm run i18n:check` | сверка ключей, плюральных форм и плейсхолдеров во всех локалях |
+Без Docker: `npm run db:embedded -w @trader-sim/api` поднимает встроенный PostgreSQL на порту 54330. Тогда в `.env` укажите
+`DATABASE_URL=postgresql://tradesim:tradesim@127.0.0.1:54330/tradesim`, а `SMTP_HOST` оставьте
+пустым — письма будут печататься в лог API.
 
-Требуется Node.js ≥ 20.19.
+| Скрипт (из корня)    | Что делает                                                              |
+| -------------------- | ----------------------------------------------------------------------- |
+| `npm run dev`        | api и web одновременно                                                  |
+| `npm run build`      | сборка всех пакетов (api → `apps/api/dist`, web → `apps/web/dist`)      |
+| `npm test`           | тесты engine, shared, api (на реальном Postgres) и web                  |
+| `npm run lint`       | ESLint по всему репозиторию, 0 предупреждений                           |
+| `npm run typecheck`  | `tsc` во всех пакетах                                                   |
+| `npm run db:migrate` | `prisma migrate deploy`                                                 |
+| `npm run db:seed`    | демо-игроки, партии, рейтинги, дружба, ежедневный челлендж              |
+| `npm run i18n:check` | одинаковые ключи, формы множественного числа и плейсхолдеры в 6 локалях |
 
-## Стек
+**База для тестов API.** Если задан `TEST_DATABASE_URL`, тесты используют его (в CI это сервис
+Postgres; локально `docker compose --profile test up -d postgres-test` →
+`postgresql://test:test@localhost:5433/tradesim_test`). Если не задан, global setup сам запускает
+встроенный PostgreSQL. Перед прогоном применяются миграции.
 
-Vite · React 18 · TypeScript (strict, без `any`) · Zustand (+persist) · react-i18next ·
-Tailwind CSS на CSS-переменных · lightweight-charts v5 · Vitest + React Testing Library ·
-ESLint + Prettier.
+## API
 
-## Архитектура
+Ошибки всегда приходят в одном формате `{ "error": { "code": "…", "message": "…" } }`; клиент
+переводит их по `code`. Полная схема — `GET /docs` (OpenAPI генерируется из тех же zod-схем, что и
+валидация).
+
+| Метод и путь                                                              | Доступ          | Назначение                                                               |
+| ------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------ |
+| `GET /health`                                                             | —               | состояние, БД, Redis, версия движка                                      |
+| `POST /auth/register`                                                     | —               | регистрация (+ импорт гостевого прогресса)                               |
+| `POST /auth/login`                                                        | —               | вход по e-mail и паролю                                                  |
+| `POST /auth/refresh`                                                      | cookie + CSRF   | ротация refresh-токена, новый access JWT                                 |
+| `POST /auth/logout`                                                       | cookie + CSRF   | выход с этого устройства                                                 |
+| `POST /auth/logout-all`                                                   | JWT             | отзыв всех сессий                                                        |
+| `POST /auth/verify-email`                                                 | —               | подтверждение e-mail по токену из письма                                 |
+| `POST /auth/resend-verification`                                          | JWT             | отправить письмо ещё раз                                                 |
+| `POST /auth/forgot-password`                                              | —               | письмо со ссылкой сброса (ответ одинаковый для любых e-mail)             |
+| `POST /auth/reset-password`                                               | —               | новый пароль, отзыв всех сессий                                          |
+| `GET /auth/providers`                                                     | —               | включённые OAuth-провайдеры                                              |
+| `GET /auth/oauth/:provider/start`, `…/callback`                           | —               | вход через Google / GitHub (за флагом конфигурации)                      |
+| `GET /me`, `PATCH /me`                                                    | JWT             | мой аккаунт (ник, аватар, язык, тема)                                    |
+| `PATCH /me/privacy`                                                       | JWT             | скрыть профиль из рейтингов                                              |
+| `GET /me/settings`, `PUT /me/settings`                                    | JWT             | облачные настройки с версией (409 `VERSION_CONFLICT`)                    |
+| `GET /me/progress`                                                        | JWT             | XP, уровень, достижения                                                  |
+| `POST /me/import-guest`                                                   | JWT             | привязать локальный прогресс гостя                                       |
+| `GET /me/export`, `DELETE /me`                                            | JWT             | выгрузка данных (GDPR) и удаление аккаунта                               |
+| `GET /users/:nickname`                                                    | —/JWT           | публичный профиль                                                        |
+| `POST /runs`                                                              | JWT             | начать партию (`standard` / `daily`), сервер выдаёт seed и конфиг        |
+| `GET /runs/active`, `GET /runs/:id`                                       | JWT             | активная / своя партия                                                   |
+| `POST /runs/:id/actions`                                                  | JWT             | чекпоинт журнала действий                                                |
+| `POST /runs/:id/finish`                                                   | JWT             | завершение: серверный реплей и итог                                      |
+| `POST /runs/:id/abandon`                                                  | JWT             | бросить партию                                                           |
+| `GET /leaderboards/:type`                                                 | —/JWT           | `?period=all\|week\|season\|daily\|friends&season=&date=&cursor=&limit=` |
+| `GET /leaderboards/:type/me`                                              | JWT             | моя позиция и по 2 соседа выше и ниже                                    |
+| `GET /seasons`                                                            | —               | текущий сезон и архив                                                    |
+| `GET /daily`                                                              | —/JWT           | ежедневный челлендж: таймер, участники, мой результат и место            |
+| `GET /friends`, `GET /friends/requests`                                   | JWT             | друзья и заявки                                                          |
+| `POST /friends/requests`                                                  | JWT             | заявка по нику (встречная заявка принимается сразу)                      |
+| `POST /friends/requests/:id/accept\|decline`, `DELETE /friends/:nickname` | JWT             | ответ на заявку, удаление                                                |
+| `GET /admin/runs/flagged`, `POST /admin/runs/:id/approve`                 | `x-admin-token` | модерация подозрительных партий                                          |
+
+Типы `:type`: `equity` (итоговый капитал), `roi`, `bestTrade`, `streak` (серия прибыльных сделок),
+`risk` (прибыль с поправкой на просадку, как коэффициент Шарпа). Пагинация — keyset-курсор
+(значение, время, id), поэтому страницы стабильны, даже пока таблица меняется.
+
+## Безопасность
+
+- Пароли — argon2id (19 MiB, t=2). Для несуществующих e-mail тоже считается хеш, чтобы время
+  ответа не выдавало зарегистрированные адреса.
+- Access JWT живёт 15 минут и хранится только в памяти вкладки. Refresh-токен (30 дней) лежит в
+  cookie `httpOnly; SameSite=Lax; Secure` с путём `/api/auth`, а в БД хранится только его SHA-256.
+- Каждый refresh выдаёт новый токен. Повторное предъявление уже заменённого токена считается кражей
+  и отзывает всю цепочку. Исключение — повтор в течение 30 секунд: так бывает, когда две вкладки
+  обновляются одновременно.
+- CSRF: эндпоинты, работающие по cookie, требуют заголовок `x-csrf-token`, равный cookie `ts_csrf`
+  (double-submit).
+- Rate limit на auth, партии и заявки в друзья; helmet; CORS по белому списку; лимит размера тела
+  запроса; IDOR — чужая партия неотличима от несуществующей (404).
+- Секреты задаются только через `.env` (см. `.env.example`).
+
+## Anti-cheat: как сервер проверяет партию
 
 ```
-src/
-├─ types/          доменные типы (без React)
-├─ engine/         ЧИСТЫЕ функции, никакого React/DOM/localStorage
-│  ├─ market/      активы, GBM, тренды, скачки, свечи, детерминированная симуляция
-│  ├─ news/        шаблоны новостей, генерация, влияние на дрейф и шок цены
-│  ├─ trading/     ордера, позиции, маржа, плечо, ликвидация, SL/TP, комиссии, статистика
-│  └─ achievements/ правила достижений, XP и уровни
-├─ store/          zustand-сторы (market, portfolio, settings, progress, ui)
-│  ├─ game.ts      оркестрация: тик → движок → сторы → события (EventBus)
-│  ├─ selectors.ts мемоизированные селекторы (сводка счёта, уровень)
-│  └─ persistence/ безопасное хранилище, валидация и миграции сохранений
-├─ features/       UI-фичи: chart, order-panel, positions, history, news-feed,
-│                  stats, achievements, leaderboard, onboarding, settings
-├─ shared/         ui-kit (Button, Modal, Toast, Tabs, Select, Tooltip, …),
-│                  hooks, lib (Intl-форматирование, seeded RNG, math), audio (Web Audio)
-├─ i18n/           инициализация i18next и locales/*.json
-├─ theme/          themes.css (токены), ThemeProvider, useTheme
-└─ app/            App, провайдеры, игровой цикл, мост событий → тосты/звуки, раскладки
+клиент                                       сервер
+  │ POST /runs ───────────────────────────────▶ seed (crypto), startTime, версия движка,
+  │◀────────────────────── конфиг партии ───── лимиты; одна активная партия на игрока
+  │
+  │ играет локально на packages/engine:
+  │ createSession(seed, startTime) → stepSession() каждый тик
+  │ каждое действие → { tick, type, payload } в журнал (переживает офлайн)
+  │
+  │ POST /runs/:id/actions (каждые 15 с) ─────▶ проверки: тики не убывают, в пределах партии,
+  │                                              ≤ 5 действий за тик, ≤ 5000 за партию,
+  │                                              темп ≤ 5 тиков в реальную секунду (+ запас)
+  │ POST /runs/:id/finish ────────────────────▶ replayRun(конфиг, журнал, finalTick)
+  │   { finalTick, engineVersion,                на серверной копии движка → итоговый капитал,
+  │     clientSummary }                          ROI, серия побед, риск-скор, достижения
+  │◀──────────── результат, рассчитанный сервером
 ```
 
-**Поток данных.** `useGameLoop` раз в `1000 / speed` мс вызывает `runTick()`:
+Результат, присланный клиентом, в расчёт не идёт — он используется только для сравнения.
+Партия получает флаги и **не попадает в рейтинг до ручной проверки**, если:
 
-1. `advanceMarket(snapshot)` — чистая функция: новости, GBM + тренд + новостной дрейф + редкие скачки,
-   обновление свечей. Состояние ГПСЧ (mulberry32) хранится в снимке, поэтому один и тот же seed
-   всегда даёт один и тот же рынок (это проверяют тесты).
-2. `processTick(account, prices)` — исполнение лимитных ордеров, затем ликвидация → SL → TP.
-3. Начисление XP, проверка достижений, проверка банкротства.
-4. События публикуются в `gameEvents`; `GameEventsBridge` превращает их в тосты и звуки.
+- `CLIENT_MISMATCH` — капитал клиента отличается от серверного больше чем на 1e-6 (относительно);
+- `REJECTED_ACTIONS` — реплей отверг действия (не хватает средств, несуществующие позиции и т.п.);
+- `UNREALISTIC_GROWTH` — ROI больше 500 %.
 
-Цикл полностью останавливается на паузе, при банкротстве, во время онбординга и когда вкладка
-скрыта (`visibilitychange`), поэтому фоновая вкладка не накапливает «догоняющие» тики.
+Если версия движка не совпадает (`ENGINE_VERSION_MISMATCH`), партия засчитывается в профиль, но
+не в рейтинг. Незавершённые партии истекают через 24 часа, ежедневная — в конце дня по UTC.
+Модератор может одобрить партию через `POST /admin/runs/:id/approve`: сервер повторит реплей и
+засчитает результат.
 
-**Производительность.** График не ререндерится от тиков: `CandleChart` подписывается на стор напрямую
-и вызывает `series.update()`. Строки списка активов и позиций подписаны только на цену своего актива
-(`memo` + узкие селекторы), статистика пересчитывается через `useMemo` только при изменении сделок,
-запись рыночного снимка в localStorage троттлится (3 с) и сбрасывается при `pagehide`.
+**Ограничение модели.** Рынок генерируется на клиенте, поэтому seed известен игроку, и
+теоретически он может заранее просчитать будущие цены. Лимит темпа и проверки делают это
+неудобным, но не невозможным. Полная защита требует, чтобы сервер стримил цены тик за тиком, —
+это следующий шаг, если рейтинг станет соревновательным.
 
-**Торговая модель** (изолированная маржа):
+**Детерминизм** подтверждают тесты: `packages/engine/src/session/session.test.ts` (один seed и
+один журнал всегда дают один результат), `apps/api/test/runs.test.ts` (партия, сыгранная тем же
+кодом, что и в браузере, принимается, а подделанная — нет) и живая проверка в браузере (капитал
+клиента и сервера совпал до последнего бита).
 
-- `notional = margin × leverage`, `quantity = notional / price`, комиссия 0,1 % от notional на входе и выходе;
-- `equity = balance + Σ unrealizedPnL`, `usedMargin = Σ margin позиций + резерв лимитных ордеров`,
-  `freeMargin = max(0, equity − usedMargin)`;
-- ликвидация, когда от маржи позиции остаётся ≤ 10 %; убыток ограничен маржой, баланс не уходит в минус;
-- банкротство — нет открытых позиций/ордеров и баланс меньше минимального ордера ($10).
+## Как добавить новый тип рейтинга
 
-**Сохранения.** Каждый стор сохраняется под своим ключом `trader-sim:*` с номером версии схемы.
-`store/persistence/migrations.ts` содержит валидаторы и миграции (пример: портфель v1 → v2).
-Повреждённый JSON удаляется, игра стартует заново и показывает предупреждение; невалидные поля
-отбрасываются по одному, а не ломают всё сохранение.
+1. `packages/shared/src/schemas/leaderboards.ts` — добавьте значение в `LEADERBOARD_TYPES`
+   (например, `'trades'`).
+2. `apps/api/prisma/schema.prisma` — добавьте значение в enum `LeaderboardMetric` (например,
+   `TRADES`) и создайте миграцию: `npm run db:migrate:dev -w @trader-sim/api -- --name lb_trades`.
+3. `apps/api/src/modules/leaderboards/metrics.ts` — привяжите тип к enum и к значению из
+   `RunSummary`, например `trades: { db: 'TRADES', value: (s) => s.totalTrades || null }`.
+   `null` означает «в этот рейтинг не писать». Если нужного значения в `RunSummary` нет, сначала
+   добавьте его в `summarizeSession` в `packages/engine` — тогда его тоже посчитает серверный реплей.
+4. `apps/web/src/features/leaderboard/formatValue.ts` — задайте формат отображения.
+5. Добавьте переводы `online.types.<type>` и `online.typeHints.<type>` во все 6 локалей
+   (`npm run i18n:check`; тест `i18n.test.ts` проверит, что все типы переведены).
 
-## Как добавить новый актив
+Вкладки, пагинация, «моя позиция» и Redis-кэш подхватят новый тип автоматически. Уже сыгранные
+партии в новый рейтинг не попадут; чтобы заполнить его задним числом, прогоните `replayRun` по
+сохранённым журналам (`RunAction`).
 
-1. Добавьте запись в `src/engine/market/assets.ts` (`id`, `symbol`, `category`, `initialPrice`,
-   `volatility` — сигма за тик, `drift`, `jumpProbability`, `jumpScale`, `decimals`).
-2. Добавьте `assets.<ID>.name` во **все** файлы `src/i18n/locales/*.json`.
-3. Если нужна новая категория — расширьте тип `AssetCategory` в `src/types/index.ts`,
-   добавьте `categories.<category>` в локали и при желании шаблоны новостей в
-   `src/engine/news/templates.ts` (тест проверяет, что у каждой категории есть и позитивные,
-   и негативные новости).
-4. `npm run i18n:check && npm test`. Старые сохранения рынка без нового актива будут
-   автоматически отброшены валидатором — рынок сгенерируется заново.
+## Синхронизация и офлайн
 
-## Как добавить новый язык
+- **Настройки** (язык, тема, звук, скорость) синхронизируются с `version` и `updatedAt`. При
+  конфликте сервер отвечает 409 со своей копией, и побеждает более свежее изменение.
+- **Рейтинговая партия** пишет действия в постоянную очередь (`localStorage`). Без сети игра
+  продолжается; чекпоинты и `finish` отправляются, как только сеть появится (событие `online`).
+- **Гость** играет полностью локально, как в версии 1. При регистрации локальный XP (до 500) и
+  достижения можно привязать к аккаунту. Они помечаются как импортированные и в рейтинг не идут.
 
-1. Скопируйте `src/i18n/locales/en.json` в `src/i18n/locales/<code>.json` и переведите значения
-   (ключи не меняйте).
-2. Плюральные ключи (`…_one`, `…_other`) оформите по правилам языка: набор суффиксов берётся из
-   `Intl.PluralRules('<code>')` — например, для польского нужны `_one`, `_few`, `_many`, `_other`.
-   `npm run i18n:check` подскажет, каких форм не хватает или какие лишние.
-3. В `src/i18n/index.ts` импортируйте файл, добавьте его в `resources` и код — в `SUPPORTED_LANGUAGES`.
-4. Добавьте название языка (на самом языке) в `settings.languages.<code>` во всех локалях.
-5. `npm run i18n:check && npm test`.
+## Фронтенд: что нового
 
-Числа, валюта, проценты и даты форматируются через `Intl` с текущим языком (`useFormatters`),
-так что отдельной настройки форматов не требуется.
+`features/auth` (вход, регистрация, сброс пароля, подтверждение e-mail, OAuth),
+`features/leaderboard` (вкладки глобальный, неделя, сезон, день, друзья; 5 метрик; моя позиция),
+`features/daily-challenge`, `features/friends`, `features/profile` (публичный профиль, приватность,
+экспорт, удаление аккаунта), `features/ranked` (старт, чекпоинты, офлайн-очередь, итоги).
 
-## Как добавить новую тему
+API-клиент (`apps/web/src/api`) типизирован схемами из `@trader-sim/shared` и сам обновляет токен
+при 401 (один запрос на все параллельные). Ошибки переводятся по коду (`apiErrors.*`). У каждого
+экрана есть состояния загрузки (skeleton), ошибки с повтором и пустого списка; экраны проверены
+в светлой, тёмной и терминальной темах и на ширине 375 px.
 
-1. В `src/theme/themes.css` скопируйте блок `[data-theme='dark'] { … }`, поменяйте селектор на
-   `[data-theme='<name>']` и значения токенов (формат `R G B`, без `rgb()`).
-2. Добавьте имя в тип `ThemeName` (`src/types/index.ts`), в массив `THEMES`
-   (`src/theme/themes.ts`) и цвет адресной строки в `META_COLORS` (`src/theme/ThemeProvider.tsx`).
-3. Добавьте `settings.themes.<name>` во все локали. Валидатор сохранений берёт список тем из
-   `THEME_PREFERENCES`, так что больше ничего регистрировать не нужно.
+## Расширение игры
 
-Tailwind-классы (`bg-surface`, `text-up`, …) и цвета графика (`readChartPalette`) читают эти же
-переменные, поэтому всё перекрашивается автоматически, включая свечи и сетку графика.
+### Новый актив
+
+1. Добавьте запись в `packages/engine/src/market/assets.ts` и поднимите `ENGINE_VERSION` в
+   `packages/engine/src/session/session.ts`: рынок изменится, и старые партии не должны смешиваться
+   с новыми в рейтинге.
+2. Добавьте `assets.<ID>.name` во все `apps/web/src/i18n/locales/*.json`.
+3. Новая категория: тип `AssetCategory` (`packages/engine/src/types.ts`), `categories.<category>` в
+   локалях, шаблоны новостей в `packages/engine/src/news/templates.ts`.
+
+### Новый язык
+
+1. Скопируйте `apps/web/src/i18n/locales/en.json` в `<code>.json` и переведите значения.
+2. Формы множественного числа задаются по `Intl.PluralRules('<code>')`; `npm run i18n:check`
+   подскажет недостающие.
+3. Зарегистрируйте язык в `apps/web/src/i18n/index.ts` (`resources`, `SUPPORTED_LANGUAGES`) и в
+   `SUPPORTED_LOCALES` в `packages/shared/src/constants.ts` (для облачной синхронизации).
+4. Добавьте `settings.languages.<code>` во все локали.
+
+### Новая тема
+
+1. Скопируйте блок `[data-theme='dark']` в `apps/web/src/theme/themes.css` под новым именем.
+2. Добавьте имя в `ThemeName` (`apps/web/src/types/index.ts`), в `THEMES`
+   (`apps/web/src/theme/themes.ts`), в `META_COLORS` (`ThemeProvider.tsx`) и в `THEME_PREFERENCES`
+   (`packages/shared/src/constants.ts`).
+3. Добавьте `settings.themes.<name>` во все локали.
 
 ## Горячие клавиши
 
-| Клавиша  | Действие           |
-| -------- | ------------------ |
-| `B`      | купить / лонг      |
-| `S`      | продать / шорт     |
-| `Пробел` | пауза / продолжить |
-
-Клавиши работают по физической позиции (`KeyboardEvent.code`), т.е. и на русской раскладке,
-и игнорируются при вводе текста и открытых диалогах.
+`B` — купить / лонг · `S` — продать / шорт · `Пробел` — пауза. Работают по физической клавише,
+то есть и на русской раскладке.

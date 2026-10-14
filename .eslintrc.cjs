@@ -8,7 +8,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
   },
-  settings: { react: { version: 'detect' } },
+  settings: { react: { version: '18.3' } },
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'react-refresh', 'jsx-a11y'],
   extends: [
     'eslint:recommended',
@@ -19,7 +19,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'prettier',
   ],
-  ignorePatterns: ['dist', 'node_modules', 'coverage', '*.config.js'],
+  ignorePatterns: ['dist', 'node_modules', 'coverage', '*.config.js', '**/prisma/migrations/**'],
   rules: {
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unused-vars': [
@@ -33,11 +33,32 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/*.test.ts', '**/*.test.tsx', 'src/test/**'],
+      files: ['**/*.test.ts', '**/*.test.tsx', '**/src/test/**'],
       rules: { 'react-refresh/only-export-components': 'off' },
     },
     {
-      files: ['scripts/**/*.mjs'],
+      // Engine must stay runtime-agnostic: no browser globals, no clock, no Math.random.
+      files: ['packages/engine/src/**/*.ts'],
+      excludedFiles: ['**/*.test.ts'],
+      env: { browser: false, node: false },
+      rules: {
+        'no-restricted-globals': [
+          'error',
+          'window',
+          'document',
+          'localStorage',
+          'sessionStorage',
+          'navigator',
+        ],
+        'no-restricted-properties': [
+          'error',
+          { object: 'Date', property: 'now', message: 'Pass time in as a parameter.' },
+          { object: 'Math', property: 'random', message: 'Use SeededRandom.' },
+        ],
+      },
+    },
+    {
+      files: ['**/scripts/**/*.mjs', 'apps/api/prisma/seed.ts'],
       rules: { 'no-console': 'off' },
     },
   ],

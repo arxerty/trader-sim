@@ -1,0 +1,564 @@
+{
+  "common": {
+    "appName": "TradeSim",
+    "tagline": "交易模拟器",
+    "disclaimer": "本游戏仅供学习，数据均为虚构，不构成任何投资建议。",
+    "pause": "暂停",
+    "resume": "继续",
+    "paused": "已暂停",
+    "live": "交易中",
+    "speed": "速度",
+    "speedValue": "{{value}}×",
+    "close": "关闭",
+    "cancel": "取消",
+    "confirm": "确认",
+    "back": "上一步",
+    "next": "下一步",
+    "skip": "跳过",
+    "restart": "重新开始",
+    "settings": "设置",
+    "notAvailable": "—",
+    "hotkeysHint": "快捷键：B — 买入，S — 卖出，空格 — 暂停",
+    "dismiss": "关闭通知",
+    "notifications": "通知",
+    "mainNavigation": "主导航",
+    "chartLabel": "{{asset}} 价格图表",
+    "skipToContent": "跳到主要内容",
+    "loading": "加载中…",
+    "retry": "重试"
+  },
+  "nav": {
+    "trade": "交易",
+    "portfolio": "持仓",
+    "news": "新闻",
+    "progress": "进度"
+  },
+  "sections": {
+    "watchlist": "市场",
+    "orderPanel": "新订单",
+    "positions": "持仓",
+    "orders": "挂单",
+    "history": "历史",
+    "news": "新闻",
+    "stats": "统计",
+    "achievements": "成就",
+    "leaderboard": "排行榜"
+  },
+  "assets": {
+    "NOVA": {
+      "name": "诺瓦科技"
+    },
+    "PTRX": {
+      "name": "佩特罗克斯能源"
+    },
+    "AURM": {
+      "name": "奥鲁姆黄金信托"
+    },
+    "BTCX": {
+      "name": "比特科尼克斯"
+    },
+    "GX500": {
+      "name": "环球 X 500 指数"
+    },
+    "VOLT": {
+      "name": "沃尔塔拉汽车"
+    },
+    "MEDI": {
+      "name": "梅迪科制药"
+    },
+    "AGRO": {
+      "name": "阿格罗菲尔德小麦"
+    }
+  },
+  "categories": {
+    "tech": "科技",
+    "energy": "石油天然气",
+    "metal": "黄金",
+    "crypto": "加密货币",
+    "index": "指数",
+    "auto": "汽车",
+    "pharma": "医药",
+    "agri": "农业"
+  },
+  "trade": {
+    "long": "做多",
+    "short": "做空",
+    "buyLong": "买入 / 做多",
+    "sellShort": "卖出 / 做空",
+    "orderType": "订单类型",
+    "market": "市价",
+    "limit": "限价",
+    "limitPrice": "限价",
+    "amountUsd": "保证金（USD）",
+    "shareOfFreeMargin": "可用保证金比例",
+    "leverage": "杠杆",
+    "leverageValue": "x{{value}}",
+    "stopLoss": "止损",
+    "takeProfit": "止盈",
+    "optional": "可选",
+    "price": "价格",
+    "change": "涨跌幅",
+    "notional": "仓位规模",
+    "quantity": "数量",
+    "fee": "手续费（{{rate}}）",
+    "liquidationPrice": "强平价格",
+    "freeMargin": "可用保证金",
+    "asset": "资产",
+    "side": "方向",
+    "entry": "开仓价",
+    "mark": "现价",
+    "exit": "平仓价",
+    "size": "规模",
+    "pnl": "盈亏",
+    "reason": "原因",
+    "time": "时间",
+    "actions": "操作",
+    "closePosition": "平仓",
+    "closePositionAria": "平掉 {{asset}} 的{{side}}仓位",
+    "cancelOrder": "撤单",
+    "cancelOrderAria": "撤销 {{asset}} 的限价单",
+    "noPositions": "暂无持仓",
+    "noOrders": "暂无挂单",
+    "noHistory": "暂无已平仓交易",
+    "positionsCount_other": "{{count}} 个持仓",
+    "tradesCount_other": "{{count}} 笔交易",
+    "selectAsset": "选择资产",
+    "reasons": {
+      "manual": "手动",
+      "stopLoss": "止损",
+      "takeProfit": "止盈",
+      "liquidation": "强制平仓"
+    }
+  },
+  "news": {
+    "empty": "暂无新闻，敬请关注……",
+    "positive": "利好",
+    "negative": "利空",
+    "impact": "影响：{{level}}",
+    "impactLevels": {
+      "low": "弱",
+      "medium": "中",
+      "high": "强"
+    },
+    "templates": {
+      "earningsBeat_other": "{{asset}} 连续 {{count}} 个季度盈利超预期",
+      "analystUpgrade_other": "{{count}} 位分析师将 {{asset}} 评级上调至“买入”",
+      "productLaunch": "{{asset}} 发布突破性新产品",
+      "drugApproval": "监管机构批准 {{asset}} 新药上市",
+      "supplyDisruption": "供应中断推高 {{asset}}",
+      "safeHaven": "投资者寻求避险：{{asset}} 需求激增",
+      "adoption": "大型支付网络宣布支持 {{asset}}",
+      "rateCut": "央行降息 {{percent}}，{{asset}} 大涨",
+      "earningsMiss": "{{asset}} 利润低于预期 {{percent}}",
+      "lawsuit": "{{asset}} 遭遇大规模集体诉讼",
+      "recall_other": "{{asset}} 召回 {{count, number}} 辆汽车",
+      "exchangeHack": "交易所遭黑客攻击：{{asset}} 从热钱包被盗",
+      "oversupply": "供应过剩担忧拖累 {{asset}}",
+      "rateHike": "意外加息 {{percent}} 冲击 {{asset}}",
+      "trialFailure": "{{asset}} 药物三期临床试验失败",
+      "ceoExit": "{{asset}} 首席执行官意外辞职"
+    }
+  },
+  "stats": {
+    "equity": "净值",
+    "balance": "余额",
+    "usedMargin": "已用保证金",
+    "freeMargin": "可用保证金",
+    "unrealizedPnl": "未实现盈亏",
+    "realizedPnl": "已实现盈亏",
+    "marginLevel": "保证金水平",
+    "totalFees": "已付手续费",
+    "winRate": "胜率",
+    "bestTrade": "最佳交易",
+    "worstTrade": "最差交易",
+    "averagePnl": "平均盈亏",
+    "averageWin": "平均盈利",
+    "averageLoss": "平均亏损",
+    "maxDrawdown": "最大回撤",
+    "totalTrades": "交易次数",
+    "winsLosses": "盈利 / 亏损",
+    "longestStreak": "最长连胜",
+    "level": "交易员等级",
+    "xp": "{{xp}} XP",
+    "nextLevel": "距“{{level}}”还需 {{xp}} XP",
+    "maxLevel": "已达到最高等级",
+    "levels": {
+      "novice": "新手",
+      "amateur": "爱好者",
+      "pro": "专业",
+      "legend": "传奇"
+    }
+  },
+  "achievements": {
+    "progress": "已解锁 {{unlocked}} / {{total}}",
+    "unlockedAt": "解锁于 {{date}}",
+    "locked": "未解锁",
+    "xpReward": "+{{xp}} XP",
+    "items": {
+      "firstTrade": {
+        "title": "第一步",
+        "description": "完成第一笔交易"
+      },
+      "firstProfit": {
+        "title": "开门红",
+        "description": "完成一笔盈利交易"
+      },
+      "tenTrades": {
+        "title": "认真起来了",
+        "description_other": "完成 {{count}} 笔交易"
+      },
+      "fiftyTrades": {
+        "title": "市场常客",
+        "description_other": "完成 {{count}} 笔交易"
+      },
+      "bigWin": {
+        "title": "大鱼",
+        "description": "单笔交易盈利 {{amount}} 或以上"
+      },
+      "highRoller": {
+        "title": "豪赌客",
+        "description": "使用 x{{value}} 杠杆开仓"
+      },
+      "bearHunter": {
+        "title": "猎熊人",
+        "description": "完成一笔盈利的空单"
+      },
+      "diversified": {
+        "title": "分散投资",
+        "description_other": "交易 {{count}} 种不同资产"
+      },
+      "hotStreak": {
+        "title": "连胜",
+        "description_other": "连续赢得 {{count}} 笔交易"
+      },
+      "disciplined": {
+        "title": "自律",
+        "description": "通过止盈锁定利润"
+      },
+      "riskManager": {
+        "title": "风控达人",
+        "description": "通过止损限制亏损"
+      },
+      "phoenix": {
+        "title": "浴火重生",
+        "description": "经历强平后仍恢复到初始资金"
+      },
+      "doubleUp": {
+        "title": "翻倍",
+        "description": "将初始资金翻倍"
+      },
+      "multitasker": {
+        "title": "多线作战",
+        "description_other": "同时持有 {{count}} 个仓位"
+      }
+    }
+  },
+  "leaderboard": {
+    "empty": "暂无记录。完成一局即可上榜。",
+    "rank": "#",
+    "date": "日期",
+    "finalEquity": "最终净值",
+    "return": "收益率",
+    "trades": "交易",
+    "winRate": "胜率",
+    "bankrupt": "破产"
+  },
+  "onboarding": {
+    "dialogTitle": "玩法介绍",
+    "stepOf": "第 {{current}} 步，共 {{total}} 步",
+    "start": "开始交易",
+    "steps": {
+      "welcome": {
+        "title": "欢迎来到 TradeSim！",
+        "body": "你拥有 10,000 美元虚拟资金和 8 种虚构资产。价格随机波动，新闻会搅动市场。目标是让资金增长，并且避免破产。"
+      },
+      "chart": {
+        "title": "读懂市场",
+        "body": "在左侧列表中选择资产，中间会显示它的 K 线图。绿色 K 线表示上涨，红色表示下跌。留意新闻：它们会影响价格。"
+      },
+      "order": {
+        "title": "开仓交易",
+        "body": "预期上涨选择“做多”，预期下跌选择“做空”。设置保证金、杠杆，最好再设置止损和止盈。快捷键：B — 买入，S — 卖出，空格 — 暂停。"
+      },
+      "risk": {
+        "title": "控制风险",
+        "body": "杠杆会同时放大盈利和亏损。如果仓位几乎亏光保证金，就会被强制平仓。每笔交易收取 0.1% 手续费。止损是你最好的朋友。"
+      }
+    }
+  },
+  "settings": {
+    "theme": "主题",
+    "themes": {
+      "system": "跟随系统",
+      "light": "浅色",
+      "dark": "深色",
+      "terminal": "终端"
+    },
+    "language": "语言",
+    "sound": "音效",
+    "volume": "音量",
+    "speed": "游戏速度",
+    "replayTutorial": "重新查看教程",
+    "newGame": "开始新游戏",
+    "newGameTitle": "开始新游戏？",
+    "newGameBody": "所有持仓将被平仓，当前成绩会记入排行榜。成就和等级将保留。",
+    "keyboard": "键盘快捷键",
+    "keys": {
+      "space": "空格",
+      "buy": "买入 / 做多",
+      "sell": "卖出 / 做空",
+      "pause": "暂停 / 继续"
+    },
+    "languages": {
+      "en": "English",
+      "ru": "Русский",
+      "es": "Español",
+      "zh": "中文",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
+  },
+  "gameOver": {
+    "title": "破产",
+    "body": "你的资金已经耗尽。每位交易员都经历过——回顾统计数据，吸取教训，再试一次吧。",
+    "finalEquity": "最终净值"
+  },
+  "toasts": {
+    "positionOpened": "已开仓：{{side}} {{asset}}",
+    "positionOpenedBody": "{{margin}} × x{{leverage}}，价格 {{price}}",
+    "orderPlaced": "限价单已提交",
+    "orderBody": "{{side}} {{asset}}，价格 {{price}}",
+    "orderFilled": "限价单已成交",
+    "orderCancelled": "订单已撤销",
+    "positionClosed": "{{asset}} 仓位已平仓",
+    "pnlBody": "盈亏：{{pnl}}",
+    "stopLoss": "触发止损：{{asset}}",
+    "takeProfit": "触发止盈：{{asset}}",
+    "liquidation": "强制平仓：{{asset}}",
+    "liquidationBody": "损失保证金：{{amount}}",
+    "achievement": "成就解锁！",
+    "levelUp": "等级提升：{{level}}",
+    "news": "新闻 · {{asset}}",
+    "bankrupt": "游戏结束：破产"
+  },
+  "errors": {
+    "unknownAsset": "未知资产或暂无价格",
+    "invalidAmount": "请输入有效金额",
+    "amountTooSmall": "最低保证金为 {{min}}",
+    "invalidLeverage": "不支持的杠杆",
+    "insufficientFunds": "可用保证金不足",
+    "invalidLimitPrice": "请输入有效的限价",
+    "invalidStopLoss": "做多时止损须低于价格，做空时须高于价格",
+    "invalidTakeProfit": "做多时止盈须高于价格，做空时须低于价格",
+    "positionNotFound": "未找到仓位——可能已被平仓",
+    "orderNotFound": "未找到订单——可能已成交",
+    "marketClosed": "无法交易：游戏已结束",
+    "duplicateAction": "操作过快，已忽略",
+    "corruptedSave": "存档已损坏并已重置",
+    "boundaryTitle": "出错了",
+    "boundaryBody": "发生了意外错误。刷新页面通常可以解决。",
+    "reload": "刷新"
+  },
+  "apiErrors": {
+    "VALIDATION_ERROR": "请检查输入的信息",
+    "UNAUTHORIZED": "请先登录",
+    "FORBIDDEN": "无权访问",
+    "NOT_FOUND": "未找到",
+    "CONFLICT": "数据已变更，请重试",
+    "RATE_LIMITED": "请求过于频繁，请稍候一分钟",
+    "CSRF_INVALID": "安全校验失败，请刷新页面",
+    "INTERNAL_ERROR": "服务器错误，请稍后再试",
+    "EMAIL_TAKEN": "该邮箱已被注册",
+    "NICKNAME_TAKEN": "该昵称已被占用",
+    "NICKNAME_INVALID": "昵称只能包含拉丁字母、数字和 _",
+    "NICKNAME_FORBIDDEN": "该昵称不可使用",
+    "INVALID_CREDENTIALS": "邮箱或密码错误",
+    "TOKEN_INVALID": "链接或会话无效",
+    "TOKEN_EXPIRED": "链接或会话已过期",
+    "PROVIDER_DISABLED": "该登录方式已停用",
+    "RUN_NOT_FOUND": "未找到对局",
+    "RUN_NOT_ACTIVE": "该对局已结束",
+    "RUN_ALREADY_ACTIVE": "你已有一局进行中的排位赛",
+    "RUN_EXPIRED": "排位对局已过期",
+    "ACTIONS_INVALID": "服务器拒绝了对局操作记录",
+    "ACTIONS_TOO_FAST": "游戏进行速度超出允许范围",
+    "ACTIONS_LIMIT": "对局中的操作过多",
+    "DAILY_ALREADY_PLAYED": "今日挑战已完成",
+    "USER_NOT_FOUND": "未找到玩家",
+    "CANNOT_FRIEND_SELF": "不能添加自己为好友",
+    "FRIEND_REQUEST_EXISTS": "好友请求已发送",
+    "ALREADY_FRIENDS": "你们已经是好友",
+    "VERSION_CONFLICT": "设置已在其他设备上更改",
+    "NETWORK": "无法连接服务器",
+    "UNKNOWN": "出现了问题"
+  },
+  "auth": {
+    "email": "邮箱",
+    "password": "密码",
+    "nickname": "昵称",
+    "nicknameHint": "{{min}}–{{max}} 个字符：拉丁字母、数字、_",
+    "passwordHint": "至少 {{min}} 个字符",
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "createAccount": "创建账号",
+    "forgotLink": "忘记密码？",
+    "noAccount": "创建账号",
+    "haveAccount": "已有账号？去登录",
+    "forgotIntro": "输入你的邮箱，我们会发送重置密码的链接。",
+    "forgotSent": "如果该邮箱对应的账号存在，我们已发送重置链接。",
+    "sendLink": "发送链接",
+    "backToSignIn": "返回登录",
+    "newPassword": "新密码",
+    "confirmPassword": "确认密码",
+    "setPassword": "保存密码",
+    "resetDone": "密码已修改，其他会话已全部退出。",
+    "verified": "邮箱已验证，谢谢！",
+    "importGuest_other": "关联本地进度：{{xp}} XP 和 {{count}} 个成就",
+    "privacyNote": "我们只保存邮箱、昵称和游戏成绩。你可以随时导出或删除数据。",
+    "continueWith": {
+      "google": "使用 Google 继续",
+      "github": "使用 GitHub 继续"
+    },
+    "titles": {
+      "login": "登录",
+      "register": "创建账号",
+      "forgot": "重置密码",
+      "reset": "设置新密码",
+      "verify": "邮箱验证"
+    },
+    "validation": {
+      "email": "请输入有效的邮箱",
+      "required": "必填项",
+      "nickname": "{{min}}–{{max}} 个字符：拉丁字母、数字和 _",
+      "password": "至少 {{min}} 个字符",
+      "mismatch": "两次输入的密码不一致"
+    }
+  },
+  "account": {
+    "menu": "账号菜单",
+    "title": "账号",
+    "verified": "已验证",
+    "notVerified": "未验证",
+    "resend": "重新发送验证邮件",
+    "verificationSent": "验证邮件已发送",
+    "hideFromLeaderboard": "在排行榜中隐藏我的资料",
+    "export": "导出我的数据",
+    "logoutAll": "退出所有设备",
+    "sessionsRevoked_other": "已退出 {{count}} 个会话",
+    "delete": "删除账号",
+    "deleteTitle": "删除账号？",
+    "deleteBody": "你的资料、对局、成就和记录将被永久删除。",
+    "deleteConfirm": "永久删除",
+    "deleted": "账号已删除",
+    "passwordConfirm": "密码",
+    "passwordConfirmHint": "通过 Google/GitHub 创建的账号可留空"
+  },
+  "community": {
+    "title": "社区",
+    "tabs": {
+      "leaderboard": "排行榜",
+      "daily": "每日挑战",
+      "friends": "好友",
+      "profile": "个人资料"
+    }
+  },
+  "online": {
+    "player": "玩家",
+    "level": "等级",
+    "types": {
+      "equity": "最终资金",
+      "roi": "收益率",
+      "bestTrade": "最佳交易",
+      "streak": "连胜",
+      "risk": "风险评分"
+    },
+    "typeHints": {
+      "equity": "已验证对局结束时的资金",
+      "roi": "相对初始资金的收益率",
+      "bestTrade": "单笔最赚钱的交易",
+      "streak": "最长的连续盈利交易",
+      "risk": "经回撤调整的收益（类似夏普比率）：稳定增长胜过侥幸暴涨"
+    },
+    "periods": {
+      "all": "全球",
+      "week": "本周",
+      "season": "赛季",
+      "daily": "每日",
+      "friends": "好友"
+    },
+    "periodLabel": "排行榜周期",
+    "metric": "指标",
+    "season": "赛季",
+    "friendsLocked": "登录后即可与好友比拼",
+    "empty": "暂无成绩",
+    "emptyHint": "完成一局排位赛，成为第一名。",
+    "loadMore": "显示更多",
+    "myPosition": "我的排名",
+    "notRanked": "你还没有进入这个排行榜。"
+  },
+  "daily": {
+    "title": "{{date}} 挑战",
+    "description": "今天所有人面对同一个市场。每天只有一次计分机会。",
+    "resetsIn": "距离新挑战",
+    "participants": "参与人数",
+    "yourResult": "你的成绩",
+    "yourRank": "你的名次",
+    "signInToPlay": "登录后参与",
+    "played": "今天已经参与过了，明天再来吧！",
+    "play": "开始挑战",
+    "continue": "继续",
+    "inProgressElsewhere": "你的挑战正在另一台设备上进行。"
+  },
+  "friends": {
+    "signInTitle": "登录后即可添加好友",
+    "invalidNickname": "请输入有效的昵称",
+    "addLabel": "通过昵称添加好友",
+    "addPlaceholder": "昵称",
+    "send": "发送",
+    "nowFriends": "你们已成为好友！",
+    "requestSent": "请求已发送",
+    "incoming_other": "{{count}} 条好友请求",
+    "accept": "接受",
+    "decline": "拒绝",
+    "title": "好友",
+    "empty": "还没有好友",
+    "emptyHint": "通过昵称添加玩家，比较彼此的成绩。",
+    "since": "{{date}} 成为好友",
+    "removeAria": "将 {{nickname}} 移出好友",
+    "remove": "移除",
+    "outgoing": "已发送的请求",
+    "pending": "等待中"
+  },
+  "profile": {
+    "signInTitle": "创建账号即可拥有公开资料",
+    "memberSince": "{{date}} 加入",
+    "friend": "好友",
+    "runs": "排位对局",
+    "bestEquity": "最佳资金",
+    "bestRoi": "最佳收益率",
+    "noAchievements": "暂无成就",
+    "bestRuns": "最佳对局",
+    "noRuns": "暂无已验证的对局"
+  },
+  "ranked": {
+    "modes": {
+      "standard": "排位",
+      "daily": "每日"
+    },
+    "queued": "成绩待发送",
+    "queuedHint": "当前无网络，恢复连接后成绩将自动发送。",
+    "practice": "练习模式",
+    "play": "开始排位",
+    "activeHint_other": "服务器将通过回放验证对局。还有 {{count}} 个操作等待同步。",
+    "finish": "结束",
+    "started": {
+      "standard": "排位对局已开始",
+      "daily": "每日挑战已开始"
+    },
+    "lost": "该对局已无法计入排名——将作为练习继续",
+    "flagged": "成绩已提交审核",
+    "accepted": "成绩已验证并计入排行榜！",
+    "unranked": "对局已验证（不计排名）",
+    "startFailed": "无法开始排位对局"
+  }
+}
