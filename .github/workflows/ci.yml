@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: lint · typecheck · test · build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: tradesim_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U test -d tradesim_test"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5432/tradesim_test
+      DATABASE_URL: postgresql://test:test@localhost:5432/tradesim_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Prisma client
+        run: npm run db:generate -w @trader-sim/api
+      - name: Lint
+        run: npm run lint
+      - name: Format
+        run: npm run format:check
+      - name: i18n keys
+        run: npm run i18n:check
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Test (engine, shared, api, web)
+        run: npm test
+      - name: Build
+        run: npm run build
+
+  docker:
+    name: docker images build
+    runs-on: ubuntu-latest
+    needs: checks
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build api image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/api/Dockerfile
+          push: false
+      - name: Build web image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/web/Dockerfile
+          push: false
